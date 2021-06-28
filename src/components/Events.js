@@ -1,8 +1,8 @@
 /* eslint-disable */
-import { useState, useEffect } from "react";
-import { NavLink } from "react-router-dom";
-import API from "../APIClient";
-import SingleEvent from "./SingleEvent";
+import { useState, useEffect } from 'react';
+import { NavLink } from 'react-router-dom';
+import API from '../APIClient';
+import SingleEvent from './SingleEvent';
 
 export default function Events() {
   const [eventsList, setEventsList] = useState([]);

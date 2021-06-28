@@ -1,4 +1,4 @@
-const dayjs = require("dayjs");
+const dayjs = require('dayjs');
 
 export default function SingleEvent({ event }) {
   console.log(event);
@@ -26,7 +26,7 @@ export default function SingleEvent({ event }) {
       <div>
         <p className="font-bold text-base md:text-xl ">{event.description}</p>
         <p className="text-sm md:text-base">
-          {dayjs(event.date).format("DD/MM/YYYY HH:mm")}
+          {dayjs(event.date).format('DD/MM/YYYY HH:mm')}
         </p>
         <p className="text-sm md:text-base">{event.duration} minutes</p>
         <p className="text-sm md:text-base">{event.location}</p>
