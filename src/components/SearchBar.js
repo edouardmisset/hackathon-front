@@ -4,10 +4,9 @@ export default function SearchBar() {
     console.log(e);
   };
   return (
-    <div className="flex flex-row align-baseline space-between">
+    <div className="flex flex-row align-baseline justify-between">
       <div className="relative text-lg bg-transparent text-gray-800">
         <div className="flex items-center border-b border-b-2 border-teal-500 py-2">
-          {/* <label>Search</label> */}
           <input
             className="bg-transparent border-none mr-4 px-4 leading-tight focus:outline-none"
             type="text"
