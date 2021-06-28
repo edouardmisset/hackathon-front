@@ -1,6 +1,6 @@
-import { Route, Switch } from "react-router-dom";
-import EventsPage from "../screens/EventsPage";
-import HomePage from "../screens/HomePage";
+import { Route, Switch } from 'react-router-dom';
+import EventsPage from '../screens/EventsPage';
+import HomePage from '../screens/HomePage';
 
 export default function Main() {
   return (

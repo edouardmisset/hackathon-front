@@ -1,5 +1,5 @@
-import "./Article.css";
-import "./button.css";
+import './Article.css';
+import './button.css';
 
 export default function Article() {
   return (
