@@ -5,7 +5,6 @@ export default function Article() {
   return (
     <article className="overflow-hidden rounded-lg shadow-lg">
       <div className="flex flex-col items-center justify-between leading-tight p-2 md:p-4">
-        <h2 className="text-lg">Title</h2>
         <div className="flex flex-row items-center w-full ">
           <img
             alt="Placeholder"
