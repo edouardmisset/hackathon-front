@@ -6,7 +6,7 @@ export default function Header() {
     <nav className="navbar ">
       <ul className="navbar-nav bg-green-light">
         <li className="nav-item">
-          <NavLink className="nav-link" href="#about" exact to="/">
+          <NavLink className="nav-link" exact to="/">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
@@ -24,7 +24,7 @@ export default function Header() {
           </NavLink>
         </li>
         <li className="nav-item">
-          <NavLink className="nav-link" href="#skills" exact to="/events">
+          <NavLink className="nav-link" exact to="/events">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
@@ -45,7 +45,7 @@ export default function Header() {
           </NavLink>
         </li>
         <li className="nav-item">
-          <a className="nav-link" title="Contact" href="#contact">
+          <NavLink className="nav-link" exact to="/profile">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
@@ -60,7 +60,7 @@ export default function Header() {
               <circle cx="12" cy="7" r="4"></circle>
             </svg>
             <span className="link-text">Contact</span>
-          </a>
+          </NavLink>
         </li>
       </ul>
     </nav>
