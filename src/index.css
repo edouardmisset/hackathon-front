@@ -1,6 +1,63 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+/* Constants */
+:root {
+  /* Colors */
+  --pink: hsla(293, 62%, 65%, 90%);
+  --red1: hsl(304, 50%, 55%);
+  --red2: hsl(0, 90%, 41%);
+  --green1: hsl(79, 52%, 56%);
+  --green2: hsl(136, 41%, 53%);
+  --yellow0: hsl(15, 75%, 81%);
+  --yellow1: hsl(25, 85%, 70%);
+  --yellow2: hsl(45, 99%, 51%);
+  --blue1: hsl(210, 100%, 74%);
+  --blue2: hsl(210, 92%, 67%);
+  --blue3: hsl(210, 84%, 59%);
+
+  --grey0: hsl(0, 0%, 95%);
+  --grey1: hsl(0, 0%, 85%);
+  --grey2: hsl(0, 0%, 75%);
+  --grey3: hsl(0, 0%, 65%);
+  --grey4: hsl(0, 0%, 55%);
+  --grey5: hsl(0, 0%, 45%);
+  --grey6: hsl(0, 0%, 35%);
+  --grey7: hsl(0, 0%, 25%);
+  --grey8: hsl(0, 0%, 15%);
+  --grey9: hsl(0, 0%, 5%);
+
+  /* Languages colors */
+  --css: hsl(208, 61%, 59%);
+  --express: hsl(0, 0%, 20%);
+  --html: rgb(212, 87, 53);
+  --javascript: rgb(210, 186, 78);
+  --mysql: rgb(98, 173, 198);
+  --nodeJS: rgb(153, 197, 93);
+  --react: rgb(129, 216, 247);
+  --mongodb: rgb(118, 171, 95);
+  --postgresql: rgb(50, 104, 144);
+
+  /* Defaults for light theme */
+  --text-primary: var(--grey9);
+  --text-secondary: var(--grey8);
+  --bg-primary: var(--grey0);
+  --bg-secondary: var(--grey2);
+  --accent-color-disabled: var(--blue1);
+  --accent-color: var(--blue2);
+  --accent-color-active: var(--blue3);
+
+  /* Components' colors */
+  --box-shadow: var(--grey3);
+
+  /* Components' sizes */
+  --border-radius: 0.25em;
+  --font-size: 16px;
+
+  /* Sizing */
+  --nav-size: 5rem;
+  --big-nav-size: 15rem;
+
+  /* Default animation speed */
+  --transition-speed: 300ms;
+}
 
 html,
 #root,
@@ -8,4 +65,51 @@ main,
 body {
   height: 100%;
   margin: 0;
+}
+
+.carousel-open:checked + .carousel-item {
+  position: static;
+  opacity: 100;
+}
+
+.carousel-item {
+  -webkit-transition: opacity 0.6s ease-out;
+  transition: opacity 0.6s ease-out;
+}
+
+#carousel-1:checked ~ .control-1,
+#carousel-2:checked ~ .control-2,
+#carousel-3:checked ~ .control-3 {
+  display: block;
+}
+
+.carousel-indicators {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  bottom: 2%;
+  left: 0;
+  right: 0;
+  text-align: center;
+  z-index: 10;
+}
+
+#carousel-1:checked
+  ~ .control-1
+  ~ .carousel-indicators
+  li:nth-child(1)
+  .carousel-bullet,
+#carousel-2:checked
+  ~ .control-2
+  ~ .carousel-indicators
+  li:nth-child(2)
+  .carousel-bullet,
+#carousel-3:checked
+  ~ .control-3
+  ~ .carousel-indicators
+  li:nth-child(3)
+  .carousel-bullet {
+  color: #2b6cb0;
+  /*Set to match the Tailwind colour you want the active one to be */
 }
