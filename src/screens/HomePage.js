@@ -1,9 +1,12 @@
-import Carousel from "../components/Carousel";
+import Article from '../components/Article';
+import UserPage from './UserPage';
 
 export default function HomePage() {
   return (
     <div>
-      <Carousel />
+      <h2 className="text-center text-lg">Home</h2>
+      <Article />
+      <UserPage />
     </div>
   );
 }
