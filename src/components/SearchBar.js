@@ -35,7 +35,7 @@ export default function SearchBar() {
       </div>
       <input id="date" name="date" type="date" />
       <button type="button" className="btn btn-green" onClick={handleClick}>
-        Go, Johnny Go !
+        Lycos, va chercher!
       </button>
     </div>
   );
