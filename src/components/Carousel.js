@@ -1,127 +1,55 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import "./Carousel.css";
 
 export default function Carousel() {
   return (
-    <div className="carousel relative rounded relative overflow-hidden shadow-xl">
-      <div className="carousel-inner relative overflow-hidden w-full">
-        {/* Slide 1 */}
-        <input
-          className="carousel-open"
-          type="radio"
-          id="carousel-1"
-          name="carousel"
-          aria-hidden="true"
-          hidden=""
-          checked="checked"
-        />
-        <div
-          className="carousel-item absolute opacity-0 bg-center"
-          style={{
-            height: "500px",
-            backgroundImage:
-              "url(https://mdbootstrap.com/img/new/slides/052.jpg)",
-          }}
-        ></div>
-        <label
-          htmlFor="carousel-3"
-          className="control-1 w-10 h-10 ml-2 md:ml-10 absolute cursor-pointer hidden font-bold text-black hover:text-white rounded-full bg-white hover:bg-blue-700 leading-tight text-center z-10 inset-y-0 left-0 my-auto flex justify-center content-center"
-        >
-          <i className="fas fa-angle-left mt-3"></i>
-        </label>
-        <label
-          htmlFor="carousel-2"
-          className="next control-1 w-10 h-10 mr-2 md:mr-10 absolute cursor-pointer hidden font-bold text-black hover:text-white rounded-full bg-white hover:bg-blue-700 leading-tight text-center z-10 inset-y-0 right-0 my-auto"
-        >
-          <i className="fas fa-angle-right mt-3"></i>
-        </label>
+    <div className="container my-12 mx-auto px-4 md:px-12">
+      <div className="flex flex-wrap -mx-1 lg:-mx-4">
+        {/* Column */}
+        <div className="my-1 px-1 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/3">
+          {/* Article */}
+          <article className="overflow-hidden rounded-lg shadow-lg">
+            <a href="#">
+              <img
+                alt="Placeholder"
+                className="block h-auto w-full"
+                src="https://picsum.photos/600/400/?random"
+              />
+            </a>
 
-        {/* Slide 2 */}
-        <input
-          className="carousel-open"
-          type="radio"
-          id="carousel-2"
-          name="carousel"
-          aria-hidden="true"
-          hidden=""
-        />
-        <div
-          className="carousel-item absolute opacity-0 bg-center"
-          style={{
-            height: "500px",
-            backgroundImage:
-              "url(https://mdbootstrap.com/img/new/slides/043.jpg)",
-          }}
-        ></div>
-        <label
-          htmlFor="carousel-1"
-          className=" control-2 w-10 h-10 ml-2 md:ml-10 absolute cursor-pointer hidden font-bold text-black hover:text-white rounded-full bg-white hover:bg-blue-700 leading-tight text-center z-10 inset-y-0 left-0 my-auto"
-        >
-          <i className="fas fa-angle-left mt-3"></i>
-        </label>
-        <label
-          htmlFor="carousel-3"
-          className="next control-2 w-10 h-10 mr-2 md:mr-10 absolute cursor-pointer hidden font-bold text-black hover:text-white rounded-full bg-white hover:bg-blue-700 leading-tight text-center z-10 inset-y-0 right-0 my-auto"
-        >
-          <i className="fas fa-angle-right mt-3"></i>
-        </label>
+            <header className="flex items-center justify-between leading-tight p-2 md:p-4">
+              <h1 className="text-lg">
+                <a className="no-underline hover:underline text-black" href="#">
+                  Article Title
+                </a>
+              </h1>
+              <p className="text-grey-darker text-sm">11/1/19</p>
+            </header>
 
-        {/* Slide 3 */}
-        <input
-          className="carousel-open"
-          type="radio"
-          id="carousel-3"
-          name="carousel"
-          aria-hidden="true"
-          hidden=""
-        />
-        <div
-          className="carousel-item absolute opacity-0"
-          style={{
-            height: "500px",
-            backgroundImage:
-              "url(https://mdbootstrap.com/img/new/slides/054.jpg)",
-          }}
-        ></div>
-        <label
-          htmlFor="carousel-2"
-          className="control-3 w-10 h-10 ml-2 md:ml-10 absolute cursor-pointer hidden font-bold text-black hover:text-white rounded-full bg-white hover:bg-blue-700 leading-tight text-center z-10 inset-y-0 left-0 my-auto"
-        >
-          <i className="fas fa-angle-left mt-3"></i>
-        </label>
-        <label
-          htmlFor="carousel-1"
-          className="next control-3 w-10 h-10 mr-2 md:mr-10 absolute cursor-pointer hidden font-bold text-black hover:text-white rounded-full bg-white hover:bg-blue-700 leading-tight text-center z-10 inset-y-0 right-0 my-auto"
-        >
-          <i className="fas fa-angle-right mt-3"></i>
-        </label>
-
-        {/* Add additional indicators for each slide */}
-        <ol className="carousel-indicators">
-          <li className="inline-block mr-3">
-            <label
-              htmlFor="carousel-1"
-              className="carousel-bullet cursor-pointer block text-4xl text-white hover:text-blue-700"
-            >
-              •
-            </label>
-          </li>
-          <li className="inline-block mr-3">
-            <label
-              htmlFor="carousel-2"
-              className="carousel-bullet cursor-pointer block text-4xl text-white hover:text-blue-700"
-            >
-              •
-            </label>
-          </li>
-          <li className="inline-block mr-3">
-            <label
-              htmlFor="carousel-3"
-              className="carousel-bullet cursor-pointer block text-4xl text-white hover:text-blue-700"
-            >
-              •
-            </label>
-          </li>
-        </ol>
+            <div className="flex items-center justify-between leading-none p-2 md:p-4">
+              <a
+                className="flex items-center no-underline hover:underline text-black"
+                href="#"
+              >
+                <img
+                  alt="Placeholder"
+                  className="block rounded-full"
+                  src="https://picsum.photos/32/32/?random"
+                />
+                <p className="ml-2 text-sm">Author Name</p>
+              </a>
+              <a
+                className="no-underline text-grey-darker hover:text-red-dark"
+                href="#"
+              >
+                <span className="hidden">Like</span>
+                <i className="fa fa-heart"></i>
+              </a>
+            </div>
+          </article>
+          {/* END Article */}
+        </div>
+        {/* END Column */}
       </div>
     </div>
   );

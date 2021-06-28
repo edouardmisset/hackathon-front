@@ -1,3 +1,6 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 /* Constants */
 :root {
   /* Colors */
@@ -55,10 +58,6 @@
   /* Default animation speed */
   --transition-speed: 300ms;
 }
-
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
 
 html,
 #root,

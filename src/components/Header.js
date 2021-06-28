@@ -2,8 +2,8 @@ import "./Header.css";
 
 export default function Header() {
   return (
-    <nav className="navbar">
-      <ul className="navbar-nav">
+    <nav className="navbar ">
+      <ul className="navbar-nav bg-green-light">
         <li className="nav-item">
           <a className="nav-link" title="About" href="#about">
             <svg
