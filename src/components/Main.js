@@ -2,6 +2,7 @@ import { Route, Switch } from 'react-router-dom';
 import EventsPage from '../screens/EventsPage';
 import HomePage from '../screens/HomePage';
 import SearchPage from '../screens/SearchPage';
+import ProfilePage from '../screens/ProfilePage.js';
 
 export default function Main() {
   return (
@@ -10,6 +11,7 @@ export default function Main() {
         <Route exact path="/" component={HomePage} />
         <Route exact path="/events" component={EventsPage} />
         <Route exact path="/search" component={SearchPage} />
+        <Route exact path="/profile" component={ProfilePage} />
       </Switch>
     </main>
   );
