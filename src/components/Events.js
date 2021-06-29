@@ -15,6 +15,7 @@ export default function Events({ eventList }) {
                   location={location}
                   date={date}
                   duration={duration}
+                  id={id}
                 />
               </li>
             )
