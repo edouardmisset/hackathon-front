@@ -23,9 +23,9 @@ export default function SearchBar() {
   };
 
   useEffect(() => {
-    API.post('events/search/', { searchValue }).then((res) => {
-      setResultList(res.data);
-    });
+    API.post('events/search/', { searchValue })
+      .then((res) => setResultList(res.data))
+      .catch(console.error);
   }, [searchValue]);
 
   return (
