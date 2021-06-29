@@ -10,7 +10,6 @@ export default function SearchBar() {
 
   const handleClick = (e) => {
     e.preventDefault();
-    console.log(e);
   };
 
   const sendQuery = async (e) => {

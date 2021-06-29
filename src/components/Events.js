@@ -8,7 +8,6 @@ export default function Events() {
   useEffect(() => {
     API.get('/events')
       .then((res) => {
-        console.log(res.data);
         setEventsList(res.data);
       })
       .catch((err) => console.error(err));
