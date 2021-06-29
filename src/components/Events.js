@@ -14,13 +14,13 @@ export default function Events() {
   }, []);
 
   return (
-    <div className="flex flex-col justify-center p-5 m-16">
+    <div className="flex flex-col justify-center p-5 ">
       <div className="titre">
         <h1 className="mt-6 text-3xl font-extrabold">Evènements à venir</h1>
       </div>
       <br />
 
-      <ul className="flex w-5/6">
+      <ul className="flex w-full overflow-x-scroll">
         {eventsList &&
           eventsList.map(
             ({ id, name, image, categories, location, date, duration }) => (
