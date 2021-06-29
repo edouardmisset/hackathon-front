@@ -1,29 +1,11 @@
-import { useState, useEffect } from 'react';
-import API from '../APIClient';
 import Event from './Event';
 
-export default function Events() {
-  const [eventsList, setEventsList] = useState([]);
-
-  useEffect(() => {
-    API.get('/events')
-      .then((res) => {
-        console.log(res.data);
-        setEventsList(res.data);
-      })
-      .catch((err) => console.error(err));
-  }, []);
-
+export default function Events({ eventList }) {
   return (
-    <div className="flex flex-col justify-center p-5 m-16">
-      <div className="titre">
-        <h1 className="mt-6 text-3xl font-extrabold">Evènements à venir</h1>
-      </div>
-      <br />
-
-      <ul className="flex w-5/6">
-        {eventsList &&
-          eventsList.map(
+    <div className="flex flex-col justify-center p-5 ">
+      <ul className="flex w-full overflow-x-scroll">
+        {eventList.length &&
+          eventList.map(
             ({ id, name, image, categories, location, date, duration }) => (
               <li className="min-w-max" key={id}>
                 <Event
@@ -33,6 +15,7 @@ export default function Events() {
                   location={location}
                   date={date}
                   duration={duration}
+                  id={id}
                 />
               </li>
             )

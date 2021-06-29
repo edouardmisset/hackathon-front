@@ -1,35 +1,43 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './button.css';
 import './SearchBar.css';
 import API from '../APIClient';
+import { NavLink } from 'react-router-dom';
+import dayjs from 'dayjs';
 
 export default function SearchBar() {
   const [searchValue, setSearchValue] = useState('');
+  // const [searchDate, setSearchDate] = useState('');
   const [resultList, setResultList] = useState([]);
 
   const handleClick = (e) => {
     e.preventDefault();
-    console.log(e);
   };
 
-  const sendQuery = async (e) => {
-    const value = e.target.value;
-    setSearchValue(value);
-    await API.post('events/search/', { value }).then((res) =>
-      setResultList(res.data)
-    );
+  // const handleDateChange = (e) => {
+  //   setSearchDate(e.target.value);
+  // };
+
+  const handleInputChange = (e) => {
+    setSearchValue(e.target.value);
   };
+
+  useEffect(() => {
+    API.post('events/search/', { searchValue })
+      .then((res) => setResultList(res.data))
+      .catch(console.error);
+  }, [searchValue]);
 
   return (
     <>
-      <div className="flex flex-row align-baseline justify-between">
+      <div className="flex flex-row align-baseline justify-between p-4 rounded mb-6 bg-green-light w-min m-auto shadow-md">
         <div className="relative text-lg bg-transparent text-gray-800">
-          <div className="flex items-center border-b border-b-2 border-teal-500 py-2">
+          <div className="flex bg-white items-center border-b border-b-2 border-teal-500 py-2 shadow-sm">
             <input
               className="bg-transparent border-none mr-4 px-4 leading-tight focus:outline-none"
               type="text"
               placeholder="Search"
-              onChange={sendQuery}
+              onChange={handleInputChange}
             />
             <button
               type="button"
@@ -55,14 +63,36 @@ export default function SearchBar() {
             </button>
           </div>
         </div>
-        <input id="date" name="date" type="date" />
-        <button type="button" className="btn btn-green" onClick={handleClick}>
+        {/* <input
+          className="bg-white border-none mr-4 px-4 leading-tight focus:outline-none shadow-sm"
+          id="date"
+          name="date"
+          type="date"
+          onChange={handleDateChange}
+        />
+        <button
+          type="button"
+          className="btn btn-green shadow-sm"
+          onClick={handleClick}
+        >
           Search
-        </button>
+        </button> */}
       </div>
-      <ul className="suggestions">
+      <ul className="suggestions absolute w-3/4 m-auto ">
         {searchValue &&
-          resultList.map((result) => <li key={result.id}>{result.name}</li>)}
+          resultList.map((result) => (
+            <li key={result.id}>
+              <NavLink
+                className="flex flex-row w-full justify-between"
+                to={`/events/${result.id}`}
+              >
+                <span className="inline-block">{result.name}</span>
+                <span className="inline-block">
+                  {dayjs(result.date).format('DD/MM/YYYY - HH:mm')}
+                </span>
+              </NavLink>
+            </li>
+          ))}
       </ul>
     </>
   );
