@@ -24,7 +24,7 @@ export default function SignIn() {
           <input type="hidden" name="remember" defaultValue="true" />
 
           <div className="mb-3">
-            <label htmlFor="email-address">Email address</label>
+            <label htmlFor="email-address">Email</label>
             <input
               name="email"
               type="email"

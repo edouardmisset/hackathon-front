@@ -37,7 +37,7 @@ export default function LoginForm() {
           <div className="flex">
             <div className="w-1/2 mr-1 mb-3">
               <label htmlFor="firstName" className="dark:text-white">
-                firstname<span style={{ color: 'red' }}>*</span>
+                Firstname<span style={{ color: 'red' }}>*</span>
               </label>
               <input
                 type="text"
