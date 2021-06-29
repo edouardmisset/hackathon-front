@@ -10,14 +10,14 @@ export default function DetailedEvent() {
   const [eventInfo, setEventInfo] = useState({});
 
   const {
-    title = 'Awesome event',
-    avatarUrl = 'https://picsum.photos/32/32/?random',
+    name = 'Awesome event',
+    image = 'https://picsum.photos/32/32/?random',
     author = 'John Doe',
-    categories = ['Web Design'],
+    tags = ['Web Design'],
     location = 'Lyon',
     date = new Date().toLocaleDateString(),
     duration = 2,
-    description = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Nisl rhoncus mattis rhoncus urna neque viverra justo nec ultrices. Vitae nunc sed velit dignissim sodales. Ipsum dolor sit amet consectetur adipiscing elit ut aliquam purus. Dictum sit amet justo donec. Diam vel quam elementum pulvinar etiam. Diam volutpat commodo sed egestas egestas. Vulputate enim nulla aliquet porttitor lacus luctus accumsan tortor. Ut sem nulla pharetra diam sit. Cras tincidunt lobortis feugiat vivamus at augue.',
+    description = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Nisl rhoncus mattis rhoncus urna neque viverra justo nec ultrices.',
   } = eventInfo;
 
   const { id } = useParams();
@@ -32,13 +32,9 @@ export default function DetailedEvent() {
   return (
     <article className="overflow-hidden rounded-lg shadow-lg">
       <div className="flex flex-col items-center justify-between leading-tight p-2 md:p-4">
-        <h2 className="text-lg">{title}</h2>
+        <h2 className="text-lg">{name}</h2>
         <div className="flex flex-row items-center w-full ">
-          <img
-            alt="Placeholder"
-            className="block rounded-full"
-            src={avatarUrl}
-          />
+          <img alt={name} className="block" src={image} />
           <p className="ml-2 text-sm">{author}</p>
         </div>
       </div>
@@ -53,8 +49,8 @@ export default function DetailedEvent() {
       <p className="text-black p-2 md:p-4">{description}</p>
 
       <div className="px-6 pt-4 pb-2">
-        {categories.length &&
-          categories.map((category) => (
+        {tags.length &&
+          tags.map((category) => (
             <span
               key={category}
               className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2"
