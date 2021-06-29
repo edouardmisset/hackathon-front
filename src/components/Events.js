@@ -8,11 +8,12 @@ export default function Events() {
   const [eventsList, setEventsList] = useState([]);
 
   useEffect(() => {
-    API.get(`/events`)
+    API.get('/events')
       .then((res) => {
+        console.log(res.data);
         setEventsList(res.data);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => console.error(err));
   }, []);
 
   return eventsList.length !== 0 ? (
@@ -25,11 +26,12 @@ export default function Events() {
       <br />
 
       <ul>
-        {eventsList.map((event) => (
-          <li key={event.id}>
-            <SingleEvent event={event} />
-          </li>
-        ))}
+        {eventsList &&
+          eventsList.map((event) => (
+            <li key={event.id}>
+              <SingleEvent event={event} />
+            </li>
+          ))}
       </ul>
     </div>
   ) : (
