@@ -4,34 +4,48 @@ import API from '../APIClient';
 
 export default function Profile({ id = 1 }) {
   const [userDetails, setUserDetails] = useState([]);
-  // const { setResultsList } = useContext(ResultsContext);
+  const [currentSkill, setCurrentSkills] = useState({});
+  const [newSkill, setNewSkill] = useState({});
 
   useEffect(() => {
     API.get(`/profiles/1`)
       .then((res) => {
-        console.log(res.data);
         setUserDetails(res.data);
       })
       .catch((err) => console.log(err));
-  }, []);
+  }, [currentSkill, newSkill]);
 
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
+
   const {
     register: register2,
     formState: { errors: errors2 },
     handleSubmit: handleSubmit2,
   } = useForm();
 
-  const onSubmitNewCurrentSkill = (formCurrent) => {
-    alert(JSON.stringify(formCurrent));
+  const onSubmitNewCurrentSkill = async (formCurrent) => {
+    await API.post(`/skills/current`, { ...formCurrent, userId: id })
+      .then(() => {})
+      .catch((err) => console.log(err));
+    setCurrentSkills(formCurrent);
   };
 
-  const onSubmitNewSkillToAcquire = (formAcquire) => {
-    alert(JSON.stringify(formAcquire));
+  const onSubmitNewSkillToAcquire = async (formAcquire) => {
+    await API.post(`/skills/new`, { ...formAcquire, userId: id })
+      .then(() => {})
+      .catch((err) => console.log(err));
+    setNewSkill(formAcquire);
+  };
+
+  const handleChangeLevel = async (skill) => {
+    await API.post(`/skills/currentchange`, { ...skill })
+      .then(() => {})
+      .catch((err) => console.log(err));
+    setCurrentSkills(skill);
   };
 
   return userDetails.length !== 0 ? (
@@ -62,6 +76,24 @@ export default function Profile({ id = 1 }) {
                 <li key={skill.id}>
                   {skill.name}
                   <span> {'⭐'.repeat(skill.level)}</span>
+                  <span className="ml-5">
+                    <label htmlFor={skill.name}>Choose the level :</label>
+                    <select
+                      key={skill.id}
+                      {...register(skill.name, { required: true })}
+                      defaultValue={skill.level}
+                      className="cursor-pointer"
+                      onChange={(e) =>
+                        handleChangeLevel({ ...skill, level: e.target.value })
+                      }
+                    >
+                      {'12345'.split('').map((star) => (
+                        <option key={star} value={star}>
+                          {'⭐'.repeat(star)}
+                        </option>
+                      ))}
+                    </select>
+                  </span>
                 </li>
               ))}
             </ul>
@@ -104,10 +136,10 @@ export default function Profile({ id = 1 }) {
           </label>
         </div>
         <div className="w-32">
-          <label htmlFor="changeLevel">
+          <label htmlFor="chooseLevel">
             Choose the level :
             <select
-              {...register('changeLevel', { required: true })}
+              {...register('chooseLevel', { required: true })}
               defaultValue="1"
               className="cursor-pointer appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900  focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
             >

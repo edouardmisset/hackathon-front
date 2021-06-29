@@ -1,6 +1,6 @@
 import dayjs from 'dayjs';
 
-export default function Card({
+export default function Event({
   name = 'Awesome event',
   image = 'https://picsum.photos/100/40/?blur',
   categories = ['Web Design'],
@@ -9,8 +9,8 @@ export default function Card({
   duration = 2,
 }) {
   return (
-    <div className="max-w-sm m-8 rounded-xl overflow-hidden shadow-lg">
-      <img className="w-full" src={image} alt="Sunset in the mountains" />
+    <div className="max-w-sm rounded overflow-hidden shadow-lg m-8">
+      <img className="w-full" src={image} alt={image} />
       <div className="px-6 py-4">
         <div className="font-bold text-xl mb-2">{name}</div>
         <div className="flex flex-row justify-between p-2 md:p-4">

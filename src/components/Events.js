@@ -21,14 +21,14 @@ export default function Events() {
       </div>
       <br />
 
-      {eventsList.length > 0 ? (
-        <ul className="flex w-5/6">
-          {eventsList.map(
-            ({ name, id, image, categories, location, date, duration }) => (
+      <ul className="flex w-5/6">
+        {eventsList &&
+          eventsList.map(
+            ({ id, name, image, categories, location, date, duration }) => (
               <li className="min-w-max" key={id}>
                 <Event
-                  image={image}
                   name={name}
+                  image={image}
                   categories={categories}
                   location={location}
                   date={date}
@@ -37,12 +37,7 @@ export default function Events() {
               </li>
             )
           )}
-        </ul>
-      ) : (
-        <h1 className="flex justify-center">
-          Désolé, il n'y a aucun évènement à venir
-        </h1>
-      )}
+      </ul>
     </div>
   );
 }
