@@ -1,12 +1,13 @@
 import { useState, useContext } from 'react';
 import { useForm } from 'react-hook-form';
-import { useToasts } from 'react-toast-notifications';
+
 import { CurrentUserContext } from '../contexts/CurrentUserContext';
 
 export default function LoginForm() {
   const { createProfile } = useContext(CurrentUserContext);
   const [password, setPassword] = useState('');
 
+  // eslint-disable-next-line no-unused-vars
   const [showPassword, setShowPassword] = useState(false);
   const { register, handleSubmit } = useForm();
 
