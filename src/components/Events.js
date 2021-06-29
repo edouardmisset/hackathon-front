@@ -1,8 +1,6 @@
 /* eslint-disable */
 import { useState, useEffect } from 'react';
-import { NavLink } from 'react-router-dom';
 import API from '../APIClient';
-import DetailedEvent from './DetailedEvent';
 import Event from './Event';
 
 export default function Events() {
