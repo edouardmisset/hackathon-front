@@ -1,7 +1,7 @@
-import './Article.css';
+import './DetailedEvent.css';
 import './button.css';
 
-export default function Article({
+export default function DetailedEvent({
   title = 'Awesome event',
   avatarUrl = 'https://picsum.photos/32/32/?random',
   author = 'John Doe',
