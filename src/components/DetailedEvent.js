@@ -5,6 +5,7 @@ import { useEffect } from 'react';
 import { useState } from 'react';
 import { useParams } from 'react-router';
 import dayjs from 'dayjs';
+import { useToasts } from 'react-toast-notifications';
 
 export default function DetailedEvent() {
   const [eventInfo, setEventInfo] = useState({});
@@ -22,6 +23,8 @@ export default function DetailedEvent() {
 
   const { id } = useParams();
 
+  const { addToast } = useToasts();
+
   useEffect(() => {
     API.get(`/events/${parseInt(id, 10)}`)
       .then((res) => res.data)
@@ -30,7 +33,18 @@ export default function DetailedEvent() {
   }, [id]);
 
   const handleClick = () => {
-    console.log('hello world');
+    API.post('/register', { userId: 1, eventId: id })
+      .then(() => {
+        addToast('Successfully registered for this event', {
+          appearance: 'success',
+        });
+      })
+      .catch((error) => {
+        addToast('Something went wrong 😕', {
+          appearance: 'error',
+        });
+        console.error(error);
+      });
   };
 
   return (
