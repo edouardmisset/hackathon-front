@@ -29,22 +29,26 @@ export default function DetailedEvent() {
       .catch(console.error);
   }, [id]);
 
+  const handleClick = () => {
+    console.log('hello world');
+  };
+
   return (
     <article className="overflow-hidden rounded-lg shadow-lg">
       <div className="flex flex-col items-center justify-between leading-tight p-2 md:p-4">
-        <h2 className="text-lg">{name}</h2>
         <div className="flex flex-row items-center w-full ">
           <img alt={name} className="block" src={image} />
-          <p className="ml-2 text-sm">{author}</p>
         </div>
       </div>
+      <h2 className="text-lg flex justify-center">{name}</h2>
       <div className="flex flex-row justify-between p-2 md:p-4">
-        <p className="text-grey-darker text-sm">
-          {dayjs(date).format('DD/MM/YYYY HH:mm')} -{' '}
-          {parseInt(duration / 60, 10)}h
-        </p>
-        <p className="text-grey-darker text-sm">{location} </p>
+        <p className="ml-2 text-sm">{`by: ${author}`}</p>
+        <p className="text-grey-darker text-sm">{`${location}`} </p>
       </div>
+      <p className="text-grey-darker text-sm p-2 md:p-4">
+        {dayjs(date).format('DD/MM/YYYY HH:mm')} - {parseInt(duration / 60, 10)}
+        h
+      </p>
 
       <p className="text-black p-2 md:p-4">{description}</p>
 
@@ -60,7 +64,7 @@ export default function DetailedEvent() {
           ))}
       </div>
       <div className="flex items-center justify-center leading-none p-2 md:p-4">
-        <button type="button" className="btn btn-green ">
+        <button type="button" className="btn btn-green" onClick={handleClick}>
           Register
         </button>
       </div>
