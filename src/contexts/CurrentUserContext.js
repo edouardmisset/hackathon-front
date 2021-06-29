@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import API from '../APIClient';
 import { createContext } from 'react';
 import { useToasts } from 'react-toast-notifications';
@@ -10,7 +10,7 @@ export default function CurrentUserContextProvider({ children }) {
   const createProfile = async (form) => {
     try {
       await API.post('/user', form);
-      addToast("Votre compte a été créé avec succès", {
+      addToast('Votre compte a été créé avec succès', {
         appearance: 'success',
       });
     } catch (err) {
@@ -27,5 +27,5 @@ export default function CurrentUserContextProvider({ children }) {
     >
       {children}
     </CurrentUserContext.Provider>
-  )
+  );
 }
