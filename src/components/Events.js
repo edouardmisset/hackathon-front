@@ -15,19 +15,17 @@ export default function Events() {
   }, []);
 
   return (
-    <div className="flex items-center flex-col justify-center p-5">
-      <div className="titre ">
-        <h1 className="mt-6 text-center text-3xl font-extrabold m-16">
-          Evènements à venir
-        </h1>
+    <div className="flex flex-col justify-center p-5 m-16">
+      <div className="titre">
+        <h1 className="mt-6 text-3xl font-extrabold">Evènements à venir</h1>
       </div>
       <br />
 
       {eventsList.length > 0 ? (
-        <ul>
+        <ul className="flex w-5/6">
           {eventsList.map(
             ({ name, id, image, categories, location, date, duration }) => (
-              <li key={id}>
+              <li className="min-w-max" key={id}>
                 <Event
                   image={image}
                   name={name}

@@ -9,7 +9,7 @@ export default function Card({
   duration = 2,
 }) {
   return (
-    <div className="max-w-sm m-8 rounded overflow-hidden shadow-lg">
+    <div className="max-w-sm m-8 rounded-xl overflow-hidden shadow-lg">
       <img className="w-full" src={image} alt="Sunset in the mountains" />
       <div className="px-6 py-4">
         <div className="font-bold text-xl mb-2">{name}</div>
