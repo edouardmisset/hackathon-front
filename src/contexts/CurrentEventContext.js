@@ -1,5 +1,5 @@
 import React from "react";
-import { createContext, useCallback } from "react";
+import { createContext } from "react";
 import { useToasts } from "react-toast-notifications";
 import API from "../APIClient";
 
@@ -8,7 +8,7 @@ export const CurrentEventContext = createContext();
 export default function CurrentEventContextProvider({ children }) {
   const { addToast } = useToasts();
 
-  const createEvent = (async (form) => {
+  const createEvent = async (form) => {
     try {
       await API.post("/events/1", form);
       addToast("votre event a ete crée avec succes.", {
@@ -19,7 +19,7 @@ export default function CurrentEventContextProvider({ children }) {
         appearance: "error",
       });
     }
-  });
+  };
   return (
     <div>
       <CurrentEventContext.Provider
