@@ -3,6 +3,7 @@ import './button.css';
 import './SearchBar.css';
 import API from '../APIClient';
 import { NavLink } from 'react-router-dom';
+import dayjs from 'dayjs';
 
 export default function SearchBar() {
   const [searchValue, setSearchValue] = useState('');
@@ -22,7 +23,7 @@ export default function SearchBar() {
 
   return (
     <>
-      <div className="flex flex-row align-baseline justify-between">
+      <div className="flex flex-row align-baseline justify-between mb-6">
         <div className="relative text-lg bg-transparent text-gray-800">
           <div className="flex items-center border-b border-b-2 border-teal-500 py-2">
             <input
@@ -55,17 +56,30 @@ export default function SearchBar() {
             </button>
           </div>
         </div>
-        <input id="date" name="date" type="date" />
+        <input
+          className="bg-transparent border-none mr-4 px-4 leading-tight focus:outline-none"
+          id="date"
+          name="date"
+          type="date"
+        />
         <button type="button" className="btn btn-green" onClick={handleClick}>
           Search
         </button>
       </div>
-      <ul className="suggestions">
+      <ul className="suggestions absolute w-3/4 m-auto ">
         {searchValue &&
           resultList.map((result) => (
-            <NavLink to={`/events/${result.id}`}>
-              <li key={result.id}>{result.name}</li>
-            </NavLink>
+            <li key={result.id}>
+              <NavLink
+                className="flex flex-row w-full justify-between"
+                to={`/events/${result.id}`}
+              >
+                <span className="inline-block">{result.name}</span>
+                <span className="inline-block">
+                  {dayjs(result.date).format('DD/MM/YYYY - HH:mm')}
+                </span>
+              </NavLink>
+            </li>
           ))}
       </ul>
     </>
