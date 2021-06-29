@@ -3,6 +3,7 @@ import Header from './components/Header';
 import Main from './components/Main';
 import './index.css';
 import CurrentEventContextProvider from './contexts/CurrentEventContext';
+import CurrentUserContextProvider from './contexts/CurrentUserContext';
 
 function App() {
   return (
@@ -12,8 +13,10 @@ function App() {
       placement="bottom-center"
     >
       <CurrentEventContextProvider>
-        <Header />
-        <Main />
+        <CurrentUserContextProvider>
+          <Header />
+          <Main />
+        </CurrentUserContextProvider>
       </CurrentEventContextProvider>
     </ToastProvider>
   );

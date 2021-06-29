@@ -12,7 +12,7 @@ export default function Profile({ id = 1 }) {
       .then((res) => {
         setUserDetails(res.data);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => console.error(err));
   }, [currentSkill, newSkill]);
 
   const {
@@ -30,38 +30,44 @@ export default function Profile({ id = 1 }) {
   const onSubmitNewCurrentSkill = async (formCurrent) => {
     await API.post(`/skills/current`, { ...formCurrent, userId: id })
       .then(() => {})
-      .catch((err) => console.log(err));
+      .catch((err) => console.error(err));
     setCurrentSkills(formCurrent);
   };
 
   const onSubmitNewSkillToAcquire = async (formAcquire) => {
     await API.post(`/skills/new`, { ...formAcquire, userId: id })
       .then(() => {})
-      .catch((err) => console.log(err));
+      .catch((err) => console.error(err));
     setNewSkill(formAcquire);
   };
 
   const handleChangeLevel = async (skill) => {
     await API.post(`/skills/currentchange`, { ...skill })
       .then(() => {})
-      .catch((err) => console.log(err));
+      .catch((err) => console.error(err));
     setCurrentSkills(skill);
   };
 
   return userDetails.length !== 0 ? (
     <div className="m-4 p-2 md:p-4">
       <div className="flex flex-col justify-center items-center w-full ">
-        <img
-          alt={`${userDetails.firstName} ${userDetails.lastName}`}
-          className="block rounded-full"
-          src={
-            userDetails.avatar
-              ? userDetails.avatar
-              : `https://picsum.photos/64/64?random=${userDetails.id + 1}`
-          }
-        />
-        <p className="ml-2 text-sm">{`${userDetails.firstName} ${userDetails.lastName}`}</p>
-        <p className="ml-2 text-sm">{userDetails.email}</p>
+        <div className="flex items-center">
+          <div>
+            <img
+              alt={`${userDetails.firstName} ${userDetails.lastName}`}
+              className="w-60 rounded-full m-5"
+              src={
+                userDetails.avatar
+                  ? userDetails.avatar
+                  : `https://picsum.photos/500/500?random=${userDetails.id + 1}`
+              }
+            />
+          </div>
+          <div className="flex flex-col">
+            <p className="ml-2 text-4xl m-2">{`${userDetails.firstName} ${userDetails.lastName}`}</p>
+            <p className="ml-2 text-sm m-2">{userDetails.email}</p>
+          </div>
+        </div>
         {userDetails.currentSkills.length > 0 ? (
           <>
             <p className="ml-2 text-sm">My skills :</p>
@@ -104,10 +110,15 @@ export default function Profile({ id = 1 }) {
           </>
         ) : null}
       </div>
+
+      <h1 className="flex justify-center">
+        Enter the name of your new current skill :{' '}
+      </h1>
+
       <form
         key="onSubmitNewCurrentSkill"
         onSubmit={handleSubmit(onSubmitNewCurrentSkill)}
-        className="flex justify-around items-center mt-8 space-y-6"
+        className="flex justify-center items-center mt-2 "
         action="send"
         method="POST"
       >
@@ -115,7 +126,6 @@ export default function Profile({ id = 1 }) {
 
         <div className="w-96">
           <label htmlFor="newCurrentSkill">
-            Enter the name of your new current skill :
             <input
               {...register('newCurrentSkill', { required: true })}
               type="text"
@@ -143,13 +153,20 @@ export default function Profile({ id = 1 }) {
         </div>
 
         <div>
-          <button type="submit">Save</button>
+          <button className="bg-gray w-20 h-10 rounded" type="submit">
+            Save
+          </button>
         </div>
       </form>
+      <br />
+      <br />
+      <h1 className="flex justify-center">
+        Enter the name of a new skill you need to acquire :
+      </h1>
       <form
         key="onSubmitNewSkillToAcquire"
         onSubmit={handleSubmit2(onSubmitNewSkillToAcquire)}
-        className="flex justify-around items-center mt-8 space-y-6"
+        className="flex justify-center items-center mt-2 "
         action="send"
         method="POST"
       >
@@ -157,7 +174,6 @@ export default function Profile({ id = 1 }) {
 
         <div className="w-96">
           <label htmlFor="newSkillToAcquire">
-            Enter the name of a new skill you need to acquire :
             <input
               {...register2('newSkillToAcquire', { required: true })}
               type="text"
@@ -169,11 +185,11 @@ export default function Profile({ id = 1 }) {
         </div>
 
         <div>
-          <button type="submit">Save</button>
+          <button className="bg-gray w-20 h-10 rounded" type="submit">
+            Save
+          </button>
         </div>
       </form>
-
-      <h2 className="p-2 md:p-4">My events</h2>
     </div>
   ) : (
     <h1 className="flex justify-center">

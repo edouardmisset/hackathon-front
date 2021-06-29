@@ -8,26 +8,23 @@ export default function Events() {
   useEffect(() => {
     API.get('/events')
       .then((res) => {
-        console.log(res.data);
         setEventsList(res.data);
       })
       .catch((err) => console.error(err));
   }, []);
 
   return (
-    <div className="flex items-center flex-col justify-center p-5">
-      <div className="titre ">
-        <h1 className="mt-6 text-center text-3xl font-extrabold m-16">
-          Evènements à venir
-        </h1>
+    <div className="flex flex-col justify-center p-5 ">
+      <div className="titre">
+        <h1 className="mt-6 text-3xl font-extrabold">Evènements à venir</h1>
       </div>
       <br />
 
-      <ul>
+      <ul className="flex w-full overflow-x-scroll">
         {eventsList &&
           eventsList.map(
             ({ id, name, image, categories, location, date, duration }) => (
-              <li key={id}>
+              <li className="min-w-max" key={id}>
                 <Event
                   name={name}
                   image={image}
