@@ -5,7 +5,6 @@ import { CurrentUserContext } from '../contexts/CurrentUserContext';
 import { NavLink } from 'react-router-dom';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 
-
 export default function SignIn() {
   const { login } = useContext(CurrentUserContext);
   const { register, handleSubmit } = useForm();

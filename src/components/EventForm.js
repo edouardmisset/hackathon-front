@@ -162,16 +162,19 @@ export default function EventForm() {
                 Choose the skills you would like to acquire by this event :
               </legend>
               {newSkills.map((skill) => (
-                <label key={skill.id}>
-                  <input
-                    type="checkbox"
-                    value={skill.id}
-                    name="chosenNewSkills"
-                    ref={skill.id}
-                    {...register('chosenNewSkills')}
-                  />
-                  {skill.name}
-                </label>
+                <div className="m-1">
+                  <label key={skill.id}>
+                    <input
+                      className="m-2"
+                      type="checkbox"
+                      value={skill.id}
+                      name="chosenNewSkills"
+                      ref={skill.id}
+                      {...register('chosenNewSkills')}
+                    />
+                    {skill.name}
+                  </label>
+                </div>
               ))}
             </>
           )}
