@@ -11,7 +11,7 @@ export default function SignIn() {
   const [showPassword, setShowPassword] = useState(false);
   return (
     <div>
-      <div className="max-w-md w-full">
+      <div className="max-w-md w-full m-auto">
         <div>
           <h2 className="mt-6 text-center text-3xl font-extrabold">Log In</h2>
         </div>
@@ -66,7 +66,7 @@ export default function SignIn() {
               type="submit"
               className="group relative uppercase w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white btn btn-green"
             >
-              Login in
+              Log in
             </button>
           </div>
         </form>
