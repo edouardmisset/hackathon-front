@@ -9,8 +9,9 @@ export default function CurrentEventContextProvider({ children }) {
   const { addToast } = useToasts();
 
   const createEvent = async (form) => {
+    console.log('form   ', form);
     try {
-      await API.post('/events/1', form);
+      await API.post('/events', form);
       addToast('Your event had been successfully created !', {
         appearance: 'success',
       });

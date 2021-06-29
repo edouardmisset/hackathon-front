@@ -18,7 +18,7 @@ export default function EventForm() {
 
   const onSubmit = (form) => {
     console.log(form);
-    createEvent(form);
+    createEvent({ ...form, ownerId: 1, popularity: 0 });
   };
 
   const handleAvatarFileInputChange = (e) => {
@@ -42,7 +42,6 @@ export default function EventForm() {
       .catch((err) => console.log(err));
   }, []);
 
-  console.log(newSkills);
   return (
     <div className="flex items-center justify-center px-4 sm:px-8 lg:px-8 p-5 border shadow-2xl">
       <div className="max-w-md w-full">
@@ -148,6 +147,26 @@ export default function EventForm() {
                     name="chosenSkills"
                     ref={skill.id}
                     {...register('chosenSkills')}
+                  />
+                  {skill.name}
+                </label>
+              ))}
+            </>
+          )}
+
+          {newSkills && (
+            <>
+              <legend>
+                Choose the skills you would like to acquire by this event :
+              </legend>
+              {newSkills.map((skill) => (
+                <label key={skill.id}>
+                  <input
+                    type="checkbox"
+                    value={skill.id}
+                    name="chosenNewSkills"
+                    ref={skill.id}
+                    {...register('chosenNewSkills')}
                   />
                   {skill.name}
                 </label>
