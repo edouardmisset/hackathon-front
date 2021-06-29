@@ -7,11 +7,7 @@ import CurrentUserContextProvider from './contexts/CurrentUserContext';
 
 function App() {
   return (
-    <ToastProvider
-      autoDismiss
-      autoDismissTimeout={3000}
-      placement="bottom-center"
-    >
+    <ToastProvider autoDismiss autoDismissTimeout={3000} placement="top-right">
       <CurrentEventContextProvider>
         <CurrentUserContextProvider>
           <Header />
