@@ -21,11 +21,11 @@ export default function LoginForm() {
       <div className="max-w-md w-full">
         <div>
           <h2 className="mt-6 text-center text-3xl font-gamelle font-extrabold dark:text-white">
-            Créer votre compte
+            Create your account
           </h2>
           <h3 className="mt-6 text-center text-sm font-gamelle dark:text-white">
-            Les champs marqués d'un <span style={{ color: 'red' }}>*</span> sont
-            requis pour la création de votre compte
+            The fields with a <span style={{ color: 'red' }}>*</span> are
+            mandatory
           </h3>
         </div>
         <form
@@ -38,7 +38,7 @@ export default function LoginForm() {
           <div className="flex">
             <div className="w-1/2 mr-1 mb-3">
               <label htmlFor="firstName" className="dark:text-white">
-                Prénom<span style={{ color: 'red' }}>*</span>
+                firstname<span style={{ color: 'red' }}>*</span>
               </label>
               <input
                 type="text"
@@ -50,7 +50,7 @@ export default function LoginForm() {
             </div>
             <div className="w-1/2 ml-1">
               <label htmlFor="lastName" className="dark:text-white">
-                Nom<span style={{ color: 'red' }}>*</span>
+                Lastname<span style={{ color: 'red' }}>*</span>
               </label>
               <input
                 type="text"
@@ -63,7 +63,7 @@ export default function LoginForm() {
           </div>
           <div className="mb-3">
             <label htmlFor="email-address" className="dark:text-white">
-              Adresse Email<span style={{ color: 'red' }}>*</span>
+              Email<span style={{ color: 'red' }}>*</span>
             </label>
             <input
               name="email"
@@ -77,7 +77,7 @@ export default function LoginForm() {
           </div>
           <div className="mb-3">
             <label htmlFor="password" className="dark:text-white">
-              Mot de passe<span style={{ color: 'red' }}>*</span>
+              Password<span style={{ color: 'red' }}>*</span>
             </label>
             <input
               className="appearance-none rounded-none relative block w-full px-3 py-2 border focus:outline-none focus:z-10 sm:text-sm"
@@ -96,11 +96,8 @@ export default function LoginForm() {
             />
           </div>
           <div>
-            <button
-              type="submit"
-              className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white btn btn-green"
-            >
-              Créer
+            <button type="submit" className="btn btn-green">
+              Create
             </button>
           </div>
         </form>
