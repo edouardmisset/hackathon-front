@@ -10,7 +10,7 @@ export default function Main() {
     <main className="p-6">
       <Switch>
         <Route exact path="/" component={HomePage} />
-        <Route exact path="/events" component={EventsPage} />
+        <Route path="/events" component={EventsPage} />
         <Route exact path="/new-event" component={EventCreationPage} />
         <Route exact path="/search" component={SearchPage} />
         <Route exact path="/profile" component={ProfilePage} />
