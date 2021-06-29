@@ -1,8 +1,8 @@
-import { ToastProvider } from "react-toast-notifications";
-import Header from "./components/Header";
-import Main from "./components/Main";
-import "./index.css";
-import CurrentEventContextProvider from "./contexts/CurrentEventContext";
+import { ToastProvider } from 'react-toast-notifications';
+import Header from './components/Header';
+import Main from './components/Main';
+import './index.css';
+import CurrentEventContextProvider from './contexts/CurrentEventContext';
 
 function App() {
   return (
