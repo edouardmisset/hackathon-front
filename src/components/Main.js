@@ -4,6 +4,7 @@ import HomePage from '../screens/HomePage';
 import EventCreationPage from '../screens/EventCreationPage';
 import SearchPage from '../screens/SearchPage';
 import ProfilePage from '../screens/ProfilePage.js';
+import DetailedEvent from './DetailedEvent';
 
 export default function Main() {
   return (
@@ -14,6 +15,7 @@ export default function Main() {
         <Route exact path="/new-event" component={EventCreationPage} />
         <Route exact path="/search" component={SearchPage} />
         <Route exact path="/profile" component={ProfilePage} />
+        <Route exact path="/events/:id" component={DetailedEvent} />
       </Switch>
     </main>
   );

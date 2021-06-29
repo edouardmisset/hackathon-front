@@ -2,6 +2,7 @@ import { useState } from 'react';
 import './button.css';
 import './SearchBar.css';
 import API from '../APIClient';
+import { NavLink } from 'react-router-dom';
 
 export default function SearchBar() {
   const [searchValue, setSearchValue] = useState('');
@@ -62,7 +63,11 @@ export default function SearchBar() {
       </div>
       <ul className="suggestions">
         {searchValue &&
-          resultList.map((result) => <li key={result.id}>{result.name}</li>)}
+          resultList.map((result) => (
+            <NavLink to={`/events/${result.id}`}>
+              <li key={result.id}>{result.name}</li>
+            </NavLink>
+          ))}
       </ul>
     </>
   );
