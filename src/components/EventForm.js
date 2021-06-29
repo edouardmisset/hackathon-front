@@ -17,7 +17,7 @@ export default function EventForm() {
   };
 
   const onSubmit = (form) => {
-    console.log(form);
+    // console.log(form);
     createEvent({ ...form, ownerId: 1, popularity: 0 });
   };
 

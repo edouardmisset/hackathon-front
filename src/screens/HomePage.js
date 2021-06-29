@@ -18,8 +18,6 @@ export default function HomePage() {
     });
   }, []);
 
-  console.log(userEventList);
-
   return (
     <>
       <SearchBar />
