@@ -1,19 +1,24 @@
-import React, { useRef, useState, useContext } from 'react';
+import React, { useRef, useState, useEffect, useContext } from 'react';
 import { useForm } from 'react-hook-form';
 import { CurrentEventContext } from '../contexts/CurrentEventContext';
+import API from '../APIClient';
 
 export default function EventForm() {
   const [event, setEvent] = useState(false);
-
+  const [tagList, setTagList] = useState(false);
+  const [currentSkills, setCurrentSkills] = useState([]);
+  const [newSkills, setNewSkills] = useState([]);
   const { createEvent } = useContext(CurrentEventContext);
   const avatarUploadRef = useRef();
   const { register, handleSubmit, setValue } = useForm();
+
   const handleChangeToggle = () => {
     setEvent(!event);
   };
 
   const onSubmit = (form) => {
-    createEvent(form);
+    console.log(form);
+    createEvent({ ...form, ownerId: 1, popularity: 0 });
   };
 
   const handleAvatarFileInputChange = (e) => {
@@ -21,6 +26,21 @@ export default function EventForm() {
       setValue('file', URL.createObjectURL(e.target.files[0]));
     }
   };
+
+  useEffect(() => {
+    API.get(`events/tags`)
+      .then((res) => {
+        setTagList(res.data);
+      })
+      .catch((err) => console.log(err));
+
+    API.get(`/profiles`)
+      .then((res) => {
+        setCurrentSkills(res.data.currentSkills);
+        setNewSkills(res.data.skillsToAcquire);
+      })
+      .catch((err) => console.log(err));
+  }, []);
 
   return (
     <div className="flex items-center justify-center px-4 sm:px-8 lg:px-8 p-5 border shadow-2xl">
@@ -72,7 +92,6 @@ export default function EventForm() {
               <input
                 type="checkbox"
                 onClick={handleChangeToggle}
-                required
                 {...register('online')}
               />
             </div>
@@ -101,7 +120,64 @@ export default function EventForm() {
               {...register('file')}
             />
           </div>
+          <div>
+            {tagList && (
+              <>
+                <label htmlFor="tag">Choose the tag for this event : </label>
+                <select {...register('tag')}>
+                  {tagList.map((tag) => (
+                    <option key={tag.id} value={tag.id}>
+                      {tag.name}
+                    </option>
+                  ))}
+                </select>
+              </>
+            )}
+          </div>
 
+          {currentSkills && (
+            <>
+              <legend>Choose your current skills linked to this event :</legend>
+              {currentSkills.map((skill) => (
+                <div className="m-1">
+                  <label key={skill.id}>
+                    <input
+                      className="m-2"
+                      type="checkbox"
+                      value={skill.id}
+                      name="chosenSkills"
+                      ref={skill.id}
+                      {...register('chosenSkills')}
+                    />
+                    {skill.name}
+                  </label>
+                </div>
+              ))}
+            </>
+          )}
+
+          {newSkills && (
+            <>
+              <legend>
+                Choose the skills you would like to acquire by this event :
+              </legend>
+              {newSkills.map((skill) => (
+                <div className="m-1">
+                  <label key={skill.id}>
+                    <input
+                      className="m-2"
+                      type="checkbox"
+                      value={skill.id}
+                      name="chosenNewSkills"
+                      ref={skill.id}
+                      {...register('chosenNewSkills')}
+                    />
+                    {skill.name}
+                  </label>
+                </div>
+              ))}
+            </>
+          )}
           <div>
             <button
               type="submit"

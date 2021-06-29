@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import API from '../APIClient';
 import { createContext, useState } from 'react';
 import { useToasts } from 'react-toast-notifications';
+import history from '../history';
 
 export const CurrentUserContext = createContext();
 
@@ -10,7 +11,8 @@ export default function CurrentUserContextProvider({ children }) {
   // eslint-disable-next-line no-unused-vars
   const [loadingProfile, setLoadingProfile] = useState(false);
   // eslint-disable-next-line no-unused-vars
-  const [profile, setProfile] = useState();
+  const [profile, setProfile] = useState(null);
+  const isLoggedIn = !!profile;
 
   const createProfile = async (form) => {
     try {
@@ -40,11 +42,27 @@ export default function CurrentUserContextProvider({ children }) {
     }
   };
 
+  const logout = async () => {
+    try {
+      await API.get('/auth/logout');
+      addToast('Vous vous êtes déconnecté !', {
+        appearance: 'success',
+      });
+      setProfile(undefined);
+      history.push('/');
+    } catch (err) {
+      addToast('Impossible de se déconnecter !', {
+        appearance: 'error',
+      });
+    }
+  };
+
   const getProfile = async () => {
     setLoadingProfile(true);
     let data = null;
     try {
       data = await API.get('/currentUser').then((res) => res.data);
+      console.log('data    ', data);
       setProfile(data);
     } catch (err) {
       window.console.error(err);
@@ -56,7 +74,11 @@ export default function CurrentUserContextProvider({ children }) {
       value={{
         createProfile,
         getProfile,
+        profile,
         login,
+        isLoggedIn,
+        profile,
+        logout,
       }}
     >
       {children}
