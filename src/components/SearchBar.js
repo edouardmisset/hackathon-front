@@ -23,7 +23,7 @@ export default function SearchBar() {
 
   return (
     <>
-      <div className="flex flex-row align-baseline justify-between mb-6">
+      <div className="flex flex-row align-baseline justify-between p-2 rounded mb-6 bg-green-light max-w-3xl m-auto">
         <div className="relative text-lg bg-transparent text-gray-800">
           <div className="flex items-center border-b border-b-2 border-teal-500 py-2">
             <input
