@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React from 'react';
 import API from '../APIClient';
 import { createContext, useState } from 'react';
 import { useToasts } from 'react-toast-notifications';
@@ -77,7 +77,6 @@ export default function CurrentUserContextProvider({ children }) {
         profile,
         login,
         isLoggedIn,
-        profile,
         logout,
       }}
     >

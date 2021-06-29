@@ -1,6 +1,6 @@
 import { useState, useContext } from 'react';
 import { useForm } from 'react-hook-form';
-import './button.css'
+import './button.css';
 
 import { CurrentUserContext } from '../contexts/CurrentUserContext';
 

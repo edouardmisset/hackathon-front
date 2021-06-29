@@ -2,9 +2,8 @@ import React, { useState, useContext } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useForm } from 'react-hook-form';
 import { CurrentUserContext } from '../contexts/CurrentUserContext';
-import { NavLink } from 'react-router-dom';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
-import './button.css'
+import './button.css';
 
 export default function SignIn() {
   const { login } = useContext(CurrentUserContext);
