@@ -9,7 +9,7 @@ import './input.css';
 
 export default function Main() {
   return (
-    <main className="p-6">
+    <main>
       <Switch>
         <Route exact path="/" component={HomePage} />
         <Route exact path="/create-event" component={CreateEventPage} />
