@@ -2,8 +2,8 @@ import React, { useState, useContext } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useForm } from 'react-hook-form';
 import { CurrentUserContext } from '../contexts/CurrentUserContext';
-import { NavLink } from 'react-router-dom';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
+import './button.css';
 
 export default function SignIn() {
   const { login } = useContext(CurrentUserContext);
@@ -30,7 +30,7 @@ export default function SignIn() {
               type="email"
               autoComplete="email"
               required
-              className="rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+              className="rounded-none relative block w-full px-3 py-2 border border-gray-300 sm:text-sm"
               placeholder="croc.blanc@exemple.com"
               {...register('email')}
             />
@@ -44,7 +44,7 @@ export default function SignIn() {
               required
               // eslint-disable-next-line react/jsx-no-duplicate-props
               type={showPassword ? 'text' : 'password'}
-              className="rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+              className="rounded-none relative block w-full px-3 py-2 border border-gray sm:text-sm"
               placeholder="********"
               {...register('password')}
             />
@@ -64,7 +64,7 @@ export default function SignIn() {
           <div>
             <button
               type="submit"
-              className="group relative uppercase w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-primary hover:bg-secondary focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:bg-darkpurple"
+              className="group relative uppercase w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white btn btn-green"
             >
               Login in
             </button>
