@@ -30,7 +30,7 @@ export default function SearchBar() {
 
   return (
     <>
-      <div className="flex flex-row align-baseline justify-between p-4 rounded mb-6 bg-green-light w-min m-auto shadow-md">
+      <div className="flex flex-row align-baseline justify-between p-4 rounded bg-green-light w-min m-auto shadow-md">
         <div className="relative text-lg bg-transparent text-gray-800">
           <div className="flex bg-white items-center border-b border-b-2 border-teal-500 py-2 shadow-sm">
             <input
@@ -78,7 +78,7 @@ export default function SearchBar() {
           Search
         </button> */}
       </div>
-      <ul className="suggestions absolute w-3/4 m-auto ">
+      <ul className="suggestions w-3/4 m-auto ">
         {searchValue &&
           resultList.map((result) => (
             <li key={result.id}>
