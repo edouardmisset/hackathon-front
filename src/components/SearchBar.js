@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './button.css';
 import './SearchBar.css';
 import API from '../APIClient';
@@ -7,30 +7,37 @@ import dayjs from 'dayjs';
 
 export default function SearchBar() {
   const [searchValue, setSearchValue] = useState('');
+  // const [searchDate, setSearchDate] = useState('');
   const [resultList, setResultList] = useState([]);
 
   const handleClick = (e) => {
     e.preventDefault();
   };
 
-  const sendQuery = async (e) => {
-    const value = e.target.value;
-    setSearchValue(value);
-    await API.post('events/search/', { value }).then((res) =>
-      setResultList(res.data)
-    );
+  // const handleDateChange = (e) => {
+  //   setSearchDate(e.target.value);
+  // };
+
+  const handleInputChange = (e) => {
+    setSearchValue(e.target.value);
   };
+
+  useEffect(() => {
+    API.post('events/search/', { searchValue }).then((res) => {
+      setResultList(res.data);
+    });
+  }, [searchValue]);
 
   return (
     <>
-      <div className="flex flex-row align-baseline justify-between p-2 rounded mb-6 bg-green-light max-w-3xl m-auto">
+      <div className="flex flex-row align-baseline justify-between p-4 rounded mb-6 bg-green-light w-min m-auto shadow-md">
         <div className="relative text-lg bg-transparent text-gray-800">
-          <div className="flex items-center border-b border-b-2 border-teal-500 py-2">
+          <div className="flex bg-white items-center border-b border-b-2 border-teal-500 py-2 shadow-sm">
             <input
               className="bg-transparent border-none mr-4 px-4 leading-tight focus:outline-none"
               type="text"
               placeholder="Search"
-              onChange={sendQuery}
+              onChange={handleInputChange}
             />
             <button
               type="button"
@@ -56,15 +63,20 @@ export default function SearchBar() {
             </button>
           </div>
         </div>
-        <input
-          className="bg-transparent border-none mr-4 px-4 leading-tight focus:outline-none"
+        {/* <input
+          className="bg-white border-none mr-4 px-4 leading-tight focus:outline-none shadow-sm"
           id="date"
           name="date"
           type="date"
+          onChange={handleDateChange}
         />
-        <button type="button" className="btn btn-green" onClick={handleClick}>
+        <button
+          type="button"
+          className="btn btn-green shadow-sm"
+          onClick={handleClick}
+        >
           Search
-        </button>
+        </button> */}
       </div>
       <ul className="suggestions absolute w-3/4 m-auto ">
         {searchValue &&
