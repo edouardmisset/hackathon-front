@@ -2,6 +2,7 @@ import { ToastProvider } from 'react-toast-notifications';
 import Header from './components/Header';
 import Main from './components/Main';
 import './index.css';
+import CurrentEventContextProvider from './contexts/CurrentEventContext';
 
 function App() {
   return (
@@ -10,8 +11,10 @@ function App() {
       autoDismissTimeout={3000}
       placement="bottom-center"
     >
-      <Header />
-      <Main />
+      <CurrentEventContextProvider>
+        <Header />
+        <Main />
+      </CurrentEventContextProvider>
     </ToastProvider>
   );
 }
