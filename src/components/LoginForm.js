@@ -24,8 +24,7 @@ export default function LoginForm() {
             Create your account
           </h2>
           <h3 className="mt-6 text-center text-sm font-gamelle dark:text-white">
-            The fields with a <span style={{ color: 'red' }}>*</span> are
-            mandatory
+            <span style={{ color: 'red' }}>*</span> mandatory fields.
           </h3>
         </div>
         <form
@@ -95,7 +94,7 @@ export default function LoginForm() {
               onChange={(e) => setPassword(e.target.value)}
             />
           </div>
-          <div>
+          <div className="flex justify-center">
             <button type="submit" className="btn btn-green">
               Create
             </button>
