@@ -16,7 +16,7 @@ export default function Events() {
       .catch((err) => console.error(err));
   }, []);
 
-  return eventsList.length !== 0 ? (
+  return (
     <div className="flex items-center flex-col justify-center p-5">
       <div className="titre ">
         <h1 className="mt-6 text-center text-3xl font-extrabold m-16">
@@ -25,18 +25,19 @@ export default function Events() {
       </div>
       <br />
 
-      <ul>
-        {eventsList &&
-          eventsList.map((event) => (
+      {eventsList.length > 0 ? (
+        <ul>
+          {eventsList.map((event) => (
             <li key={event.id}>
               <SingleEvent event={event} />
             </li>
           ))}
-      </ul>
+        </ul>
+      ) : (
+        <h1 className="flex justify-center">
+          Désolé, il n'y a aucun évènement à venir
+        </h1>
+      )}
     </div>
-  ) : (
-    <h1 className="flex justify-center">
-      Désolé, il n'y a aucun évènement à venir
-    </h1>
   );
 }
