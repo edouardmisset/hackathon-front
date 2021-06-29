@@ -104,11 +104,21 @@ export default function EventForm() {
           <div>
             <label htmlFor="duration">Duration</label>
             <select {...register('duration')}>
-              <option value={60}>1H</option>
-              <option value={90}>1H30</option>
-              <option value={120}>2H</option>
-              <option value={150}>2H30</option>
-              <option value={180}>3H</option>
+              <option key={60} value={60}>
+                1H
+              </option>
+              <option key={90} value={90}>
+                1H30
+              </option>
+              <option key={120} value={120}>
+                2H
+              </option>
+              <option key={150} value={150}>
+                2H30
+              </option>
+              <option key={180} value={180}>
+                3H
+              </option>
             </select>
           </div>
           <div>
@@ -139,7 +149,7 @@ export default function EventForm() {
             <>
               <legend>Choose your current skills linked to this event :</legend>
               {currentSkills.map((skill) => (
-                <div className="m-1">
+                <div key={skill.id} className="m-1">
                   <label key={skill.id}>
                     <input
                       className="m-2"
@@ -162,7 +172,7 @@ export default function EventForm() {
                 Choose the skills you would like to acquire by this event :
               </legend>
               {newSkills.map((skill) => (
-                <div className="m-1">
+                <div key={skill.id} className="m-1">
                   <label key={skill.id}>
                     <input
                       className="m-2"

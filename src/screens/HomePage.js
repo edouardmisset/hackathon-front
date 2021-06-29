@@ -20,9 +20,9 @@ export default function HomePage() {
     <>
       <SearchBar />
       <h2 className="text-center text-lg">Recent Events</h2>
-      <Events eventList={recentEvents} />
+      {recentEvents && <Events eventList={recentEvents} />}
       <h2 className="text-center text-lg">Popular Events</h2>
-      <Events eventList={popularEvents} />
+      {popularEvents && <Events eventList={popularEvents} />}
       <h2 className="text-center text-lg">My Events</h2>
     </>
   );
