@@ -11,11 +11,11 @@ export default function CurrentEventContextProvider({ children }) {
   const createEvent = async (form) => {
     try {
       await API.post('/events/1', form);
-      addToast('votre event a ete crée avec succes.', {
+      addToast('Your event had been successfully created !', {
         appearance: 'success',
       });
     } catch (err) {
-      addToast('Il y a eu une erreur lors de la création de votre event.', {
+      addToast('There was an error during the creation of event.', {
         appearance: 'error',
       });
     }
