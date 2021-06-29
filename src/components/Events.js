@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import API from '../APIClient';
+import DetailedEvent from './DetailedEvent';
 import Event from './Event';
 
 export default function Events() {
@@ -23,14 +24,14 @@ export default function Events() {
       </div>
       <br />
 
-      {eventsList.length > 0 ? (
-        <ul>
-          {eventsList.map(
-            ({ name, id, image, categories, location, date, duration }) => (
+      <ul>
+        {eventsList &&
+          eventsList.map(
+            ({ id, name, image, categories, location, date, duration }) => (
               <li key={id}>
                 <Event
-                  image={image}
                   name={name}
+                  image={image}
                   categories={categories}
                   location={location}
                   date={date}
@@ -39,12 +40,7 @@ export default function Events() {
               </li>
             )
           )}
-        </ul>
-      ) : (
-        <h1 className="flex justify-center">
-          Désolé, il n'y a aucun évènement à venir
-        </h1>
-      )}
+      </ul>
     </div>
   );
 }
