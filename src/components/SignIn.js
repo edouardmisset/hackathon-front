@@ -5,7 +5,6 @@ import { CurrentUserContext } from '../contexts/CurrentUserContext';
 import { NavLink } from 'react-router-dom';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 
-
 export default function SignIn() {
   const { login } = useContext(CurrentUserContext);
   const { register, handleSubmit } = useForm();
@@ -14,9 +13,7 @@ export default function SignIn() {
     <div>
       <div className="max-w-md w-full">
         <div>
-          <h2 className="mt-6 text-center text-3xl font-extrabold">
-            Connectez-vous
-          </h2>
+          <h2 className="mt-6 text-center text-3xl font-extrabold">Log In</h2>
         </div>
         <form
           onSubmit={handleSubmit(login)}
@@ -27,7 +24,7 @@ export default function SignIn() {
           <input type="hidden" name="remember" defaultValue="true" />
 
           <div className="mb-3">
-            <label htmlFor="email-address">Adresse Email</label>
+            <label htmlFor="email-address">Email address</label>
             <input
               name="email"
               type="email"
@@ -39,7 +36,7 @@ export default function SignIn() {
             />
           </div>
           <div className="mb-5">
-            <label htmlFor="password">Mot de passe</label>
+            <label htmlFor="password">password</label>
             <input
               name="password"
               type="password"
@@ -57,21 +54,19 @@ export default function SignIn() {
               onClick={() => setShowPassword(!showPassword)}
             />
           </div>
-          <NavLink to="/forgot-password">Mot de passe oublié ?</NavLink>
-          <br />
           <input
             name="stayConnected"
             className="mr-3"
             type="checkbox"
             {...register('stayConnected')}
           />
-          <label>Maintenir la connexion</label>
+          <label>Remember me</label>
           <div>
             <button
               type="submit"
               className="group relative uppercase w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-primary hover:bg-secondary focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:bg-darkpurple"
             >
-              Connexion
+              Login in
             </button>
           </div>
         </form>
