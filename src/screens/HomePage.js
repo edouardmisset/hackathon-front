@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import API from '../APIClient';
 import Events from '../components/Events';
+import SearchBar from '../components/SearchBar';
 
 export default function HomePage() {
   const [recentEvents, setRecentEvents] = useState([]);
@@ -16,13 +17,13 @@ export default function HomePage() {
   }, []);
 
   return (
-    <div>
-      <h2 className="text-center text-lg">Home</h2>
-      <h3>Recent Events</h3>
+    <>
+      <SearchBar />
+      <h2 className="text-center text-lg">Recent Events</h2>
       <Events eventList={recentEvents} />
-      <h3>Popular Events</h3>
+      <h2 className="text-center text-lg">Popular Events</h2>
       <Events eventList={popularEvents} />
-      <h3>My Events</h3>
-    </div>
+      <h2 className="text-center text-lg">My Events</h2>
+    </>
   );
 }
