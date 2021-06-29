@@ -2,7 +2,8 @@
 import { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import API from '../APIClient';
-import SingleEvent from './SingleEvent';
+import DetailedEvent from './DetailedEvent';
+import Event from './Event';
 
 export default function Events() {
   const [eventsList, setEventsList] = useState([]);
@@ -27,11 +28,20 @@ export default function Events() {
 
       <ul>
         {eventsList &&
-          eventsList.map((event) => (
-            <li key={event.id}>
-              <SingleEvent event={event} />
-            </li>
-          ))}
+          eventsList.map(
+            ({ id, name, image, categories, location, date, duration }) => (
+              <li key={id}>
+                <Event
+                  name={name}
+                  image={image}
+                  categories={categories}
+                  location={location}
+                  date={date}
+                  duration={duration}
+                />
+              </li>
+            )
+          )}
       </ul>
     </div>
   ) : (
