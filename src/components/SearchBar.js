@@ -31,7 +31,11 @@ export default function SearchBar() {
               placeholder="Search"
               onChange={sendQuery}
             />
-            <button type="button" className="absolute right-0 top-0 mt-3 mr-4 ">
+            <button
+              type="button"
+              className="absolute right-0 top-0 mt-3 mr-4 "
+              onClick={handleClick}
+            >
               <svg
                 className="h-4 w-4 fill-current"
                 xmlns="http://www.w3.org/2000/svg"
@@ -53,7 +57,7 @@ export default function SearchBar() {
         </div>
         <input id="date" name="date" type="date" />
         <button type="button" className="btn btn-green" onClick={handleClick}>
-          Lycos, va chercher!
+          Search
         </button>
       </div>
       <ul className="suggestions">
