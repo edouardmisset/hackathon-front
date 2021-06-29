@@ -63,12 +63,14 @@ html,
 #root,
 main,
 body {
-  height: 100%;
   margin: 0;
 }
 
 /* Small screens */
 @media only screen and (max-width: 600px) {
+  main {
+    margin-bottom: var(--nav-size);
+  }
 }
 
 /* Large screens */
