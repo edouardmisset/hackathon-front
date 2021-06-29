@@ -69,6 +69,9 @@ body {
 
 /* Small screens */
 @media only screen and (max-width: 600px) {
+  main {
+    margin-bottom: var(--nav-size);
+  }
 }
 
 /* Large screens */
