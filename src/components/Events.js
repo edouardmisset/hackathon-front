@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import API from '../APIClient';
-import DetailedEvent from './DetailedEvent';
 import Event from './Event';
 
 export default function Events() {
