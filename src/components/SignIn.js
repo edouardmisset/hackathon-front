@@ -1,10 +1,10 @@
-import React, { useState, useContext } from 'react'
+import React, { useState, useContext } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useForm } from 'react-hook-form';
 import { CurrentUserContext } from '../contexts/CurrentUserContext';
 import { NavLink } from 'react-router-dom';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
-import { faGoogle } from '@fortawesome/free-brands-svg-icons';
+
 
 export default function SignIn() {
   const { login } = useContext(CurrentUserContext);
@@ -45,6 +45,7 @@ export default function SignIn() {
               type="password"
               autoComplete="current-password"
               required
+              // eslint-disable-next-line react/jsx-no-duplicate-props
               type={showPassword ? 'text' : 'password'}
               className="rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
               placeholder="********"
@@ -56,9 +57,7 @@ export default function SignIn() {
               onClick={() => setShowPassword(!showPassword)}
             />
           </div>
-          <NavLink to="/forgot-password">
-            Mot de passe oublié ?
-          </NavLink>
+          <NavLink to="/forgot-password">Mot de passe oublié ?</NavLink>
           <br />
           <input
             name="stayConnected"
@@ -78,5 +77,5 @@ export default function SignIn() {
         </form>
       </div>
     </div>
-  )
+  );
 }

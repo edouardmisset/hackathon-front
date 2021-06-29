@@ -7,7 +7,9 @@ export const CurrentUserContext = createContext();
 
 export default function CurrentUserContextProvider({ children }) {
   const { addToast } = useToasts();
+  // eslint-disable-next-line no-unused-vars
   const [loadingProfile, setLoadingProfile] = useState(false);
+  // eslint-disable-next-line no-unused-vars
   const [profile, setProfile] = useState();
 
   const createProfile = async (form) => {
@@ -48,13 +50,13 @@ export default function CurrentUserContextProvider({ children }) {
       window.console.error(err);
       return data;
     }
-  }
+  };
   return (
     <CurrentUserContext.Provider
       value={{
         createProfile,
         getProfile,
-        login
+        login,
       }}
     >
       {children}
