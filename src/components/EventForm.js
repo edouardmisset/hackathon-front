@@ -42,6 +42,7 @@ export default function EventForm() {
       .catch((err) => console.log(err));
   }, []);
 
+  console.log(newSkills);
   return (
     <div className="flex items-center justify-center px-4 sm:px-8 lg:px-8 p-5 border shadow-2xl">
       <div className="max-w-md w-full">
