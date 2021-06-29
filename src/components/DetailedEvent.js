@@ -48,7 +48,7 @@ export default function DetailedEvent() {
   };
 
   return (
-    <article className="overflow-hidden rounded-lg shadow-lg">
+    <article className="overflow-hidden rounded-lg shadow-lg max-w-prose m-auto my-4">
       <div className="flex flex-col items-center justify-between leading-tight p-2 md:p-4">
         <div className="flex flex-row items-center w-full ">
           <img alt={name} className="block" src={image} />

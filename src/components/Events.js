@@ -3,7 +3,7 @@ import Event from './Event';
 export default function Events({ eventList }) {
   console.log(eventList);
   return (
-    <div className="flex flex-col justify-center p-5 ">
+    <div className="flex flex-col justify-center">
       <ul className="flex w-full overflow-x-scroll">
         {eventList.length &&
           eventList.map(

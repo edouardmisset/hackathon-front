@@ -1,7 +1,9 @@
 .suggestions {
   margin: 0;
   padding: 0;
-  position: relative;
+  position: absolute;
+  left: 50%;
+  transform: translate(calc(-50% + var(--nav-size) / 2));
 }
 
 .suggestions li {

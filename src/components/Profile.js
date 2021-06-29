@@ -71,7 +71,7 @@ export default function Profile({ id = 1 }) {
 
         <div className="flex flex-col w-2/4">
           <div className="flex flex-col">
-            <h2 className="font-bold text-3xl">My skills :</h2>
+            <h2 className="font-bold text-3xl">My skills</h2>
             {userDetails.currentSkills.length > 0 ? (
               <>
                 <ul className="text-xl ">
@@ -108,9 +108,7 @@ export default function Profile({ id = 1 }) {
           </div>
           <div className="flex flex-col">
             <div>
-              <h1 className="flex mt-5">
-                Enter the name of your new current skill :{' '}
-              </h1>
+              <h1 className="flex mt-5">Skill you have</h1>
 
               <form
                 key="onSubmitNewCurrentSkill"
@@ -127,7 +125,7 @@ export default function Profile({ id = 1 }) {
                       <input
                         {...register('newCurrentSkill', { required: true })}
                         type="text"
-                        className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900  focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                        className="input"
                         placeholder="Please enter the name of the skill you want to add"
                       />
                       {errors.newCurrentSkill && <p>This is required</p>}
@@ -136,11 +134,10 @@ export default function Profile({ id = 1 }) {
 
                   <div>
                     <label htmlFor="chooseLevel">
-                      Choose the level :
                       <select
                         {...register('chooseLevel', { required: true })}
                         defaultValue="1"
-                        className="cursor-pointer appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900  focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                        className="select"
                       >
                         {'12345'.split('').map((star) => (
                           <option key={star} value={star}>
@@ -152,7 +149,7 @@ export default function Profile({ id = 1 }) {
                   </div>
 
                   <div className="ml-2">
-                    <button className="bg-gray w-20 h-10 rounded" type="submit">
+                    <button className="btn btn-green" type="submit">
                       Save
                     </button>
                   </div>
@@ -160,7 +157,7 @@ export default function Profile({ id = 1 }) {
               </form>
             </div>
             <div className="flex flex-col mt-5">
-              <h2 className="font-bold text-3xl">Skills I need to acquire :</h2>
+              <h2 className="font-bold text-3xl">What I want to learn</h2>
 
               {userDetails.skillsToAcquire.length > 0 ? (
                 <>
@@ -175,9 +172,7 @@ export default function Profile({ id = 1 }) {
           </div>
 
           <div>
-            <h1 className="flex mt-5">
-              Enter the name of a new skill you need to acquire :
-            </h1>
+            <h1 className="flex mt-5">Skill you want</h1>
 
             <form
               key="onSubmitNewSkillToAcquire"
@@ -193,7 +188,7 @@ export default function Profile({ id = 1 }) {
                   <input
                     {...register2('newSkillToAcquire', { required: true })}
                     type="text"
-                    className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900  focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                    className="input"
                     placeholder="Please enter the name of the new skill you need to acquire"
                   />
                   {errors2.newSkillToAcquire && <p>This is required</p>}
@@ -201,7 +196,7 @@ export default function Profile({ id = 1 }) {
               </div>
 
               <div>
-                <button className="bg-gray w-20 h-10 rounded" type="submit">
+                <button className="btn btn-green" type="submit">
                   Save
                 </button>
               </div>

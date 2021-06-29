@@ -1,14 +1,20 @@
 import Profile from '../components/Profile';
 import Event from '../components/Event';
+import { useContext } from 'react';
+import { CurrentUserContext } from '../contexts/CurrentUserContext';
 
 export default function ProfilePage() {
+  const { userEventList } = useContext(CurrentUserContext);
+
   return (
     <>
       <Profile />
-      <div className="mt-6 text-3xl font-extrabold m-16">
-        <h2 className="p-2 md:p-4">My events</h2>
-        <Event />
-      </div>
+      {!!userEventList.length && (
+        <>
+          <h2 className="p-2 md:p-4">My events</h2>
+          <Event eventList={userEventList} />
+        </>
+      )}
     </>
   );
 }
