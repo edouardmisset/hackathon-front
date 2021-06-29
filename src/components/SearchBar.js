@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import './button.css';
+import './SearchBar.css';
 import API from '../APIClient';
 
 export default function SearchBar() {
@@ -56,9 +57,8 @@ export default function SearchBar() {
         </button>
       </div>
       <ul className="suggestions">
-        {resultList.map((result) => (
-          <li key={result.id}>{result.name}</li>
-        ))}
+        {searchValue &&
+          resultList.map((result) => <li key={result.id}>{result.name}</li>)}
       </ul>
     </>
   );
