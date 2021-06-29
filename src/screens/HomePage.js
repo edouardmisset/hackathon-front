@@ -25,7 +25,7 @@ export default function HomePage() {
       <Events eventList={recentEvents} />
       <h2 className="text-center text-lg">Popular Events</h2>
       <Events eventList={popularEvents} />
-      {isLoggedIn && userEventList.length && (
+      {isLoggedIn && !!userEventList.length && (
         <>
           <h2 className="text-center text-lg">My Events</h2>
           <Events eventList={userEventList} />

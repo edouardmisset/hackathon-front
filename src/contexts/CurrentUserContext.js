@@ -29,10 +29,10 @@ export default function CurrentUserContextProvider({ children }) {
       await API.post('/users', form);
       addToast('Votre compte a été créé avec succès', {
         appearance: 'success',
-      })
+      });
       setTimeout(() => {
-        history.push('/login')
-      }, 3000)
+        history.push('/login');
+      }, 3000);
     } catch (err) {
       addToast('Il y a eu une erreur lors de la création de votre compte.', {
         appearance: 'error',
@@ -48,8 +48,8 @@ export default function CurrentUserContextProvider({ children }) {
       getProfile();
       getUserEvents();
       setTimeout(() => {
-        history.push('/')
-      }, 3000)
+        history.push('/');
+      }, 3000);
     } catch (err) {
       if (err.response && err.response.status === 401) {
         addToast('Email ou mot de passe incorrect !', {
