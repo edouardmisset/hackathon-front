@@ -5,6 +5,7 @@ import DetailedEvent from './DetailedEvent';
 import CreateEventPage from '../screens/CreateEventPage';
 import SignUpPage from '../screens/SignUpPage';
 import SignInPage from '../screens/SignInPage';
+import './input.css';
 
 export default function Main() {
   return (
