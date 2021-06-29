@@ -1,11 +1,13 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import API from '../APIClient';
 import Events from '../components/Events';
 import SearchBar from '../components/SearchBar';
+import { CurrentUserContext } from '../contexts/CurrentUserContext';
 
 export default function HomePage() {
   const [recentEvents, setRecentEvents] = useState([]);
   const [popularEvents, setPopularEvents] = useState([]);
+  const { isLoggedIn, userEventList } = useContext(CurrentUserContext);
 
   useEffect(() => {
     API.get('/events/popular').then((res) => {
@@ -16,6 +18,8 @@ export default function HomePage() {
     });
   }, []);
 
+  console.log(userEventList);
+
   return (
     <>
       <SearchBar />
@@ -23,7 +27,12 @@ export default function HomePage() {
       <Events eventList={recentEvents} />
       <h2 className="text-center text-lg">Popular Events</h2>
       <Events eventList={popularEvents} />
-      <h2 className="text-center text-lg">My Events</h2>
+      {isLoggedIn && userEventList.length && (
+        <>
+          <h2 className="text-center text-lg">My Events</h2>
+          <Events eventList={userEventList} />
+        </>
+      )}
     </>
   );
 }

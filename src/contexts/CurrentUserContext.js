@@ -1,4 +1,3 @@
-import React, { useCallback } from 'react';
 import API from '../APIClient';
 import { createContext, useState } from 'react';
 import { useToasts } from 'react-toast-notifications';
@@ -14,9 +13,20 @@ export default function CurrentUserContextProvider({ children }) {
   const [profile, setProfile] = useState(null);
   const isLoggedIn = !!profile;
 
+  const [userEventList, setUserEventList] = useState([]);
+
+  const getUserEvents = async () => {
+    try {
+      const { data: userEventList } = await API.get('/users/:id/events');
+      setUserEventList(userEventList);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   const createProfile = async (form) => {
     try {
-      await API.post('/user', form);
+      await API.post('/users', form);
       addToast('Votre compte a été créé avec succès', {
         appearance: 'success',
       });
@@ -33,6 +43,7 @@ export default function CurrentUserContextProvider({ children }) {
         appearance: 'success',
       });
       getProfile();
+      getUserEvents();
     } catch (err) {
       if (err.response && err.response.status === 401) {
         addToast('Email ou mot de passe incorrect !', {
@@ -77,8 +88,8 @@ export default function CurrentUserContextProvider({ children }) {
         profile,
         login,
         isLoggedIn,
-        profile,
         logout,
+        userEventList,
       }}
     >
       {children}
