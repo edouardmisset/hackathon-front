@@ -34,7 +34,7 @@ export default function EventForm() {
       })
       .catch((err) => console.log(err));
 
-    API.get(`/profiles/1`)
+    API.get(`/profiles`)
       .then((res) => {
         setCurrentSkills(res.data.currentSkills);
         setNewSkills(res.data.skillsToAcquire);
@@ -92,7 +92,6 @@ export default function EventForm() {
               <input
                 type="checkbox"
                 onClick={handleChangeToggle}
-                required
                 {...register('online')}
               />
             </div>
@@ -140,16 +139,19 @@ export default function EventForm() {
             <>
               <legend>Choose your current skills linked to this event :</legend>
               {currentSkills.map((skill) => (
-                <label key={skill.id}>
-                  <input
-                    type="checkbox"
-                    value={skill.id}
-                    name="chosenSkills"
-                    ref={skill.id}
-                    {...register('chosenSkills')}
-                  />
-                  {skill.name}
-                </label>
+                <div className="m-1">
+                  <label key={skill.id}>
+                    <input
+                      className="m-2"
+                      type="checkbox"
+                      value={skill.id}
+                      name="chosenSkills"
+                      ref={skill.id}
+                      {...register('chosenSkills')}
+                    />
+                    {skill.name}
+                  </label>
+                </div>
               ))}
             </>
           )}

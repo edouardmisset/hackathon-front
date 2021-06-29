@@ -8,7 +8,7 @@ export default function Profile({ id = 1 }) {
   const [newSkill, setNewSkill] = useState({});
 
   useEffect(() => {
-    API.get(`/profiles/1`)
+    API.get(`/profiles`)
       .then((res) => {
         setUserDetails(res.data);
       })

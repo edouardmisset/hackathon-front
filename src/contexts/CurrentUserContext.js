@@ -45,6 +45,7 @@ export default function CurrentUserContextProvider({ children }) {
     let data = null;
     try {
       data = await API.get('/currentUser').then((res) => res.data);
+      console.log('data    ', data);
       setProfile(data);
     } catch (err) {
       window.console.error(err);
@@ -56,6 +57,7 @@ export default function CurrentUserContextProvider({ children }) {
       value={{
         createProfile,
         getProfile,
+        profile,
         login,
       }}
     >
