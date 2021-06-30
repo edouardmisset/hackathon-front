@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { useForm } from 'react-hook-form';
 import { CurrentEventContext } from '../contexts/CurrentEventContext';
 import API from '../APIClient';
@@ -9,7 +9,6 @@ export default function EventForm() {
   const [currentSkills, setCurrentSkills] = useState([]);
   const [newSkills, setNewSkills] = useState([]);
   const { createEvent } = useContext(CurrentEventContext);
-  const avatarUploadRef = useRef();
   const { register, handleSubmit, setValue } = useForm();
 
   const handleChangeToggle = () => {
@@ -142,7 +141,9 @@ export default function EventForm() {
             <input type="time" {...register('time')} />
           </div>
           <div className="mt-5">
-            <label htmlFor="image" className="mt-5 subtitles">Add a picture (optional) :</label>
+            <label htmlFor="image" className="mt-5 subtitles">
+              Add a picture (optional) :
+            </label>
             <input
               className="relative block w-full px-3 py-2 border focus:outline-none focus:z-10 sm:text-sm"
               type="text"

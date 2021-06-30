@@ -30,21 +30,21 @@ export default function Profile({ id = 1 }) {
 
   const onSubmitNewCurrentSkill = async (formCurrent) => {
     await API.post(`/skills/current`, { ...formCurrent, userId: id })
-      .then(() => { })
+      .then(() => {})
       .catch((err) => console.error(err));
     setCurrentSkills(formCurrent);
   };
 
   const onSubmitNewSkillToAcquire = async (formAcquire) => {
     await API.post(`/skills/new`, { ...formAcquire, userId: id })
-      .then(() => { })
+      .then(() => {})
       .catch((err) => console.error(err));
     setNewSkill(formAcquire);
   };
 
   const handleChangeLevel = async (skill) => {
     await API.post(`/skills/currentchange`, { ...skill })
-      .then(() => { })
+      .then(() => {})
       .catch((err) => console.error(err));
     setCurrentSkills(skill);
   };
