@@ -40,8 +40,8 @@ export default function DetailedEvent() {
           appearance: 'success',
         });
         setTimeout(() => {
-          history.push('/')
-        }, 500)
+          history.push('/');
+        }, 500);
       })
       .catch((error) => {
         addToast('Something went wrong 😕', {

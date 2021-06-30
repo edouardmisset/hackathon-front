@@ -11,7 +11,7 @@ export default function CurrentUserContextProvider({ children }) {
   const [loadingProfile, setLoadingProfile] = useState(false);
   // eslint-disable-next-line no-unused-vars
   const [profile, setProfile] = useState(null);
-  const [isLoggedIn, setIsLoggedIn] = useState(false)
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const [userEventList, setUserEventList] = useState([]);
 
@@ -80,7 +80,7 @@ export default function CurrentUserContextProvider({ children }) {
     try {
       data = await API.get('/currentUser').then((res) => res.data);
       setProfile(data);
-      setIsLoggedIn(true)
+      setIsLoggedIn(true);
     } catch (err) {
       window.console.error(err);
       return data;
@@ -88,8 +88,8 @@ export default function CurrentUserContextProvider({ children }) {
   };
 
   useEffect(() => {
-    getProfile()
-  }, [])
+    getProfile();
+  }, []);
 
   return (
     <CurrentUserContext.Provider
