@@ -43,16 +43,19 @@ export default function EventForm() {
   }, []);
 
   return (
-    <div className="flex items-center justify-center px-4 sm:px-8 lg:px-8 p-5 border shadow-2xl">
+    <div className="flex items-center justify-center w-4/5 px-4 my-5 m-auto sm:px-8 lg:px-8 p-5 border shadow-2xl">
       <div className="max-w-md w-full">
+        <h1 className="titles">Add a new event</h1>
         <form
           onSubmit={handleSubmit(onSubmit)}
-          className="mt-8 space-y-6"
+          className="mt-8"
           action="send"
           method="POST"
         >
-          <div>
-            <label htmlFor="name">name</label>
+          <div className="mt-5">
+            <label htmlFor="name" className="subtitles">
+              Name
+            </label>
             <input
               type="text"
               required
@@ -61,9 +64,9 @@ export default function EventForm() {
               {...register('name')}
             />
           </div>
-          <div>
-            <label htmlFor="description" className="dark:text-white">
-              description
+          <div className="mt-5">
+            <label htmlFor="description" className="subtitles">
+              Description
             </label>
             <input
               type="textarea"
@@ -73,9 +76,9 @@ export default function EventForm() {
               {...register('description')}
             />
           </div>
-          <div>
-            <label htmlFor="location" className="dark:text-white">
-              location
+          <div className="mt-5">
+            <label htmlFor="location" className="subtitles">
+              Location
             </label>
             <input
               type="text"
@@ -86,8 +89,10 @@ export default function EventForm() {
             />
           </div>
           <div className="flex justify-between">
-            <div>
-              <label htmlFor="online">Presential ?</label>
+            <div className="mt-5">
+              <label htmlFor="online" className="subtitles">
+                Online event ?
+              </label>
               <br />
               <input
                 type="checkbox"
@@ -95,34 +100,40 @@ export default function EventForm() {
                 {...register('online')}
               />
             </div>
-            <div>
-              <label htmlFor="date">choose your date</label>
+            <div className="mt-5">
+              <label htmlFor="date" className="subtitles">
+                Choose your date
+              </label>
               <br />
               <input type="date" {...register('date')} />
             </div>
           </div>
-          <div>
-            <label htmlFor="duration">Duration</label>
-            <select {...register('duration')}>
+          <div className="mt-5">
+            <label htmlFor="duration" className="subtitles">
+              Duration
+            </label>
+            <select {...register('duration')} className="ml-5">
               <option key={60} value={60}>
-                1H
+                1h
               </option>
               <option key={90} value={90}>
-                1H30
+                1h30
               </option>
               <option key={120} value={120}>
-                2H
+                2h
               </option>
               <option key={150} value={150}>
-                2H30
+                2h30
               </option>
               <option key={180} value={180}>
-                3H
+                3h
               </option>
             </select>
           </div>
-          <div>
+          <div className="mt-5">
+            <div className="subtitles">Add a picture (optional) :</div>
             <input
+              className="mt-2"
               type="file"
               accept="image/png, image/jpeg, image/jpg"
               ref={avatarUploadRef}
@@ -130,10 +141,12 @@ export default function EventForm() {
               {...register('file')}
             />
           </div>
-          <div>
+          <div className="mt-5">
             {tagList && (
               <>
-                <label htmlFor="tag">Choose the tag for this event : </label>
+                <label htmlFor="tag" className="subtitles">
+                  Choose the tag for this event :{' '}
+                </label>
                 <select {...register('tag')}>
                   {tagList.map((tag) => (
                     <option key={tag.id} value={tag.id}>
@@ -146,10 +159,12 @@ export default function EventForm() {
           </div>
 
           {currentSkills && (
-            <>
-              <legend>Choose your current skills linked to this event :</legend>
+            <div className="mt-5">
+              <legend className="subtitles">
+                Choose your current skills linked to this event :
+              </legend>
               {currentSkills.map((skill) => (
-                <div key={skill.id} className="m-1">
+                <div key={skill.id}>
                   <label key={skill.id}>
                     <input
                       className="m-2"
@@ -163,13 +178,13 @@ export default function EventForm() {
                   </label>
                 </div>
               ))}
-            </>
+            </div>
           )}
 
           {newSkills && (
-            <>
-              <legend>
-                Choose the skills you would like to acquire by this event :
+            <div className="mt-5">
+              <legend className="subtitles">
+                Choose the skills you would like to acquire with this event :
               </legend>
               {newSkills.map((skill) => (
                 <div key={skill.id} className="m-1">
@@ -186,12 +201,12 @@ export default function EventForm() {
                   </label>
                 </div>
               ))}
-            </>
+            </div>
           )}
           <div>
             <button
               type="submit"
-              className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white btn btn-green"
+              className="mt-5 group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white btn btn-green"
             >
               Créer
             </button>

@@ -21,9 +21,9 @@ export default function HomePage() {
   return (
     <>
       <SearchBar />
-      <h2 className="text-center text-lg">Recent Events</h2>
+      <h2 className="titles text-center">Upcoming Events</h2>
       {recentEvents && <Events eventList={recentEvents} />}
-      <h2 className="text-center text-lg">Popular Events</h2>
+      <h2 className="titles text-center">Popular Events</h2>
       <Events eventList={popularEvents} />
       {isLoggedIn && !!userEventList.length && (
         <>

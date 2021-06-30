@@ -51,7 +51,7 @@ export default function Profile({ id = 1 }) {
   return userDetails.length !== 0 ? (
     <div className="flex flex-col items-center p-2 md:p-4">
       <div className="flex w-full justify-around mb-20 mt-10">
-        <div className="flex flex-col">
+        <div className="flex flex-col items-center">
           <div>
             <img
               alt={`${userDetails.firstName} ${userDetails.lastName}`}
@@ -62,21 +62,22 @@ export default function Profile({ id = 1 }) {
                   : `https://picsum.photos/500/500?random=${userDetails.id + 1}`
               }
             />
-          </div>
-          <div className="flex flex-col ">
-            <p className="ml-2 lg:text-5xl md:text-4xl text-3xl m-2">{`${userDetails.firstName} ${userDetails.lastName}`}</p>
-            <p className="ml-2 text-sm m-2">{userDetails.email}</p>
+
+            <div className="flex flex-col">
+              <p className="ml-2 lg:text-5xl md:text-4xl text-3xl m-2">{`${userDetails.firstName} ${userDetails.lastName}`}</p>
+              <p className="ml-2 text-lg m-2">{userDetails.email}</p>
+            </div>
           </div>
         </div>
 
         <div className="flex flex-col w-2/4">
           <div className="flex flex-col">
-            <h2 className="font-bold text-3xl">My skills</h2>
+            <h2 className="titles">My skills</h2>
             {userDetails.currentSkills.length > 0 ? (
               <>
                 <ul className="text-xl ">
                   {userDetails.currentSkills.map((skill) => (
-                    <li key={skill.id}>
+                    <li key={skill.id} className="flex justify-between">
                       {skill.name}
                       <span> {'⭐'.repeat(skill.level)}</span>
                       <span className="ml-5">
@@ -108,7 +109,7 @@ export default function Profile({ id = 1 }) {
           </div>
           <div className="flex flex-col">
             <div>
-              <h1 className="flex mt-5">Skill you have</h1>
+              <h1 className="subtitles flex">Do you want to add a skill ?</h1>
 
               <form
                 key="onSubmitNewCurrentSkill"
@@ -157,7 +158,7 @@ export default function Profile({ id = 1 }) {
               </form>
             </div>
             <div className="flex flex-col mt-5">
-              <h2 className="font-bold text-3xl">What I want to learn</h2>
+              <h2 className="titles">What I want to learn</h2>
 
               {userDetails.skillsToAcquire.length > 0 ? (
                 <>
@@ -172,7 +173,9 @@ export default function Profile({ id = 1 }) {
           </div>
 
           <div>
-            <h1 className="flex mt-5">Skill you want</h1>
+            <h1 className="subtitles flex">
+              Do you want to add a new skill to learn ?
+            </h1>
 
             <form
               key="onSubmitNewSkillToAcquire"

@@ -72,6 +72,14 @@ body {
   min-height: 100vh;
 }
 
+.titles {
+  @apply text-3xl font-bold my-3;
+}
+
+.subtitles {
+  @apply text-xl font-bold  mt-10;
+}
+
 /* Small screens */
 @media only screen and (max-width: 600px) {
   main {
