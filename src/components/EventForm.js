@@ -17,8 +17,7 @@ export default function EventForm() {
   };
 
   const onSubmit = (form) => {
-    // console.log(form);
-    createEvent({ ...form, ownerId: 1, popularity: 0 });
+    createEvent({ ...form, popularity: 0 });
   };
 
   const handleAvatarFileInputChange = (e) => {

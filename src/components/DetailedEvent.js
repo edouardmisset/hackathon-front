@@ -11,14 +11,16 @@ export default function DetailedEvent() {
   const [eventInfo, setEventInfo] = useState({});
 
   const {
-    name = 'Awesome event',
-    image = 'https://picsum.photos/32/32/?random',
-    author = 'John Doe',
-    tags = ['Web Design'],
-    location = 'Lyon',
-    date = new Date().toLocaleDateString(),
-    duration = 2,
-    description = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Nisl rhoncus mattis rhoncus urna neque viverra justo nec ultrices.',
+    name,
+    image,
+    eventTags = [],
+    location,
+    date,
+    duration,
+    description,
+    owner,
+    eventCurrentSkills = [],
+    eventSkillsToAcquire = [],
   } = eventInfo;
 
   const { id } = useParams();
@@ -48,40 +50,81 @@ export default function DetailedEvent() {
   };
 
   return (
-    <article className="overflow-hidden rounded-lg shadow-lg max-w-prose m-auto my-4">
-      <div className="flex flex-col items-center justify-between leading-tight p-2 md:p-4">
-        <div className="flex flex-row items-center w-full ">
-          <img alt={name} className="block" src={image} />
-        </div>
-      </div>
-      <h2 className="text-lg flex justify-center">{name}</h2>
-      <div className="flex flex-row justify-between p-2 md:p-4">
-        <p className="ml-2 text-sm">{`by: ${author}`}</p>
-        <p className="text-grey-darker text-sm">{`${location}`} </p>
-      </div>
-      <p className="text-grey-darker text-sm p-2 md:p-4">
-        {dayjs(date).format('DD/MM/YYYY HH:mm')} - {parseInt(duration / 60, 10)}
-        h
-      </p>
+    <>
+      {Object.keys(eventInfo).length !== 0 ? (
+        <article className="overflow-hidden rounded-lg shadow-lg max-w-prose m-auto my-4">
+          <div className="flex flex-col items-center justify-between leading-tight p-2 md:p-4">
+            <div className="flex flex-row items-center w-full ">
+              <img
+                className="w-full"
+                src={
+                  image ? image : `https://picsum.photos/200/100?random=${id}`
+                }
+                alt={image}
+              />
+            </div>
+          </div>
+          <h2 className="flex justify-center font-bold text-xl mb-2">{name}</h2>
+          {/* <div className="flex flex-row justify-between p-2 md:p-4"> */}
+          <p className="ml-2 text-lg">{`by: ${owner.firstName} ${owner.lastName}`}</p>
+          <p className="ml-2 text-grey-darker text-lg">
+            {`Location: ${location}`}{' '}
+          </p>
+          {/* </div> */}
+          <p className="text-grey-darker text-sm p-2 md:p-4">
+            {dayjs(date).format('DD/MM/YYYY HH:mm')} -{' '}
+            {parseInt(duration / 60, 10)}h
+          </p>
 
-      <p className="text-black p-2 md:p-4">{description}</p>
+          <p className="text-black p-2 md:p-4">{description}</p>
 
-      <div className="px-6 pt-4 pb-2">
-        {tags.length &&
-          tags.map((category) => (
-            <span
-              key={category}
-              className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2"
+          <div className="px-6 pt-4 pb-2">
+            <h3>Topics that the organizer will discuss :</h3>
+            {eventCurrentSkills.length &&
+              eventCurrentSkills.map((currentSkill) => (
+                <span
+                  key={currentSkill.skill.id}
+                  className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2"
+                >
+                  💡 {currentSkill.skill.name}
+                </span>
+              ))}
+          </div>
+          <div className="px-6 pt-4 pb-2">
+            <h3>Topics on which the organizers would like to have help :</h3>
+            {eventSkillsToAcquire.length &&
+              eventSkillsToAcquire.map((skillToAcquire) => (
+                <span
+                  key={skillToAcquire.skill.id}
+                  className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2"
+                >
+                  ❓ {skillToAcquire.skill.name}
+                </span>
+              ))}
+          </div>
+          <div className="px-6 pt-4 pb-2">
+            {eventTags.length &&
+              eventTags.map((category) => (
+                <span
+                  key={category.id}
+                  className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2"
+                >
+                  #{category.tag.name}
+                </span>
+              ))}
+          </div>
+
+          <div className="flex items-center justify-center leading-none p-2 md:p-4">
+            <button
+              type="button"
+              className="btn btn-green"
+              onClick={handleClick}
             >
-              #{category}
-            </span>
-          ))}
-      </div>
-      <div className="flex items-center justify-center leading-none p-2 md:p-4">
-        <button type="button" className="btn btn-green" onClick={handleClick}>
-          Register
-        </button>
-      </div>
-    </article>
+              Register
+            </button>
+          </div>
+        </article>
+      ) : null}
+    </>
   );
 }

@@ -17,6 +17,8 @@ export default function Events({ eventList }) {
               location,
               date,
               duration,
+              description,
+              owner,
             }) => (
               <li className="min-w-max" key={id}>
                 <Event
@@ -29,6 +31,8 @@ export default function Events({ eventList }) {
                   date={date}
                   duration={duration}
                   id={id}
+                  description={description}
+                  owner={owner}
                 />
               </li>
             )

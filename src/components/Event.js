@@ -5,12 +5,14 @@ export default function Event({
   name,
   image,
   categories = [],
+  description,
   location,
   date,
   duration,
   id,
   currentSkills = [],
   skillsToAcquire = [],
+  owner,
 }) {
   return (
     <NavLink to={`/events/${id}`}>
@@ -27,6 +29,11 @@ export default function Event({
             {parseInt(duration / 60, 10)}h
           </div>
           <div className="text-grey-darker text-sm">{location} </div>
+          <div className="text-grey-darker text-sm mt-4 font-bold">
+            Organized by {owner.firstName} {owner.lastName}
+          </div>
+
+          <div className="text-grey-darker text-sm mt-4">{description} </div>
         </div>
 
         <div className="px-6 pt-4 pb-2">
