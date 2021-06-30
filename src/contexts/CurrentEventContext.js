@@ -16,8 +16,8 @@ export default function CurrentEventContextProvider({ children }) {
         appearance: 'success',
       });
       setTimeout(() => {
-        history.push()
-      }, 500)
+        history.push();
+      }, 500);
     } catch (err) {
       addToast('There was an error during the creation of event.', {
         appearance: 'error',

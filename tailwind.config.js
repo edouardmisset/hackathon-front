@@ -34,6 +34,14 @@ module.exports = {
       },
     },
   },
+  fill: {
+    green: {
+      light: 'rgb(208, 247, 230)',
+      medium: 'rgb(0, 115, 46)',
+      DEFAULT: 'rgb(29, 191, 115)',
+      dark: 'rgb(0, 57, 18)',
+    },
+  },
   extend: {},
   variants: {
     extend: {},

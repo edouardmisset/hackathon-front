@@ -17,7 +17,12 @@ export default function EventForm() {
   };
 
   const onSubmit = (form) => {
-    createEvent({ ...form, date: new Date(`${form.date}T${form.time}`), ownerId: 1, popularity: 0 });
+    createEvent({
+      ...form,
+      date: new Date(`${form.date}T${form.time}`),
+      ownerId: 1,
+      popularity: 0,
+    });
   };
 
   const handleAvatarFileInputChange = (e) => {
@@ -42,7 +47,7 @@ export default function EventForm() {
   }, []);
 
   return (
-    <div className="flex items-center justify-center w-4/5 px-4 my-5 m-auto sm:px-8 lg:px-8 p-5 border shadow-2xl">
+    <div className="flex items-center justify-center w-1/2 m-auto   border shadow-2xl">
       <div className="max-w-md w-full">
         <h1 className="titles">Add a new event</h1>
         <form
@@ -106,9 +111,6 @@ export default function EventForm() {
               <br />
               <input type="date" {...register('date')} />
             </div>
-            <div>
-              <input type="time" {...register('time')} />
-            </div>
           </div>
           <div className="mt-5">
             <label htmlFor="duration" className="subtitles">
@@ -131,6 +133,10 @@ export default function EventForm() {
                 3h
               </option>
             </select>
+          </div>
+          <div className="mt-5">
+            <label htmlFor="time" className="subtitles">choose your start time</label><br />
+            <input type="time" {...register('time')} />
           </div>
           <div className="mt-5">
             <div className="subtitles">Add a picture (optional) :</div>
