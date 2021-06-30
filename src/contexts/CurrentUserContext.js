@@ -1,5 +1,5 @@
 import API from '../APIClient';
-import { createContext, useState } from 'react';
+import { createContext, useState, useEffect } from 'react';
 import { useToasts } from 'react-toast-notifications';
 import history from '../history';
 
@@ -11,7 +11,7 @@ export default function CurrentUserContextProvider({ children }) {
   const [loadingProfile, setLoadingProfile] = useState(false);
   // eslint-disable-next-line no-unused-vars
   const [profile, setProfile] = useState(null);
-  const isLoggedIn = !!profile;
+  const [isLoggedIn, setIsLoggedIn] = useState(false)
 
   const [userEventList, setUserEventList] = useState([]);
 
@@ -80,11 +80,17 @@ export default function CurrentUserContextProvider({ children }) {
     try {
       data = await API.get('/currentUser').then((res) => res.data);
       setProfile(data);
+      setIsLoggedIn(true)
     } catch (err) {
       window.console.error(err);
       return data;
     }
   };
+
+  useEffect(() => {
+    getProfile()
+  }, [])
+
   return (
     <CurrentUserContext.Provider
       value={{

@@ -6,6 +6,7 @@ import { CurrentUserContext } from '../contexts/CurrentUserContext';
 export default function Header() {
   const { isLoggedIn, logout } = useContext(CurrentUserContext);
 
+
   return (
     <nav className="navbar ">
       <ul className="navbar-nav bg-green-light">
