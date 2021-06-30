@@ -135,7 +135,10 @@ export default function EventForm() {
             </select>
           </div>
           <div className="mt-5">
-            <label htmlFor="time" className="subtitles">choose your start time</label><br />
+            <label htmlFor="time" className="subtitles">
+              choose your start time
+            </label>
+            <br />
             <input type="time" {...register('time')} />
           </div>
           <div className="mt-5">
