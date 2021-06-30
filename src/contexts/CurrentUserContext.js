@@ -17,8 +17,9 @@ export default function CurrentUserContextProvider({ children }) {
 
   const getUserEvents = async () => {
     try {
-      const { data: userEventList } = await API.get('/users/:id/events');
-      setUserEventList(userEventList);
+      const { data } = await API.get(`/users/${profile.id}/events`);
+      console.log(data);
+      setUserEventList(data);
     } catch (error) {
       console.error(error);
     }
@@ -32,7 +33,7 @@ export default function CurrentUserContextProvider({ children }) {
       });
       setTimeout(() => {
         history.push('/login');
-      }, 3000);
+      }, 500);
     } catch (err) {
       addToast('Il y a eu une erreur lors de la création de votre compte.', {
         appearance: 'error',
@@ -45,11 +46,12 @@ export default function CurrentUserContextProvider({ children }) {
       addToast('Connexion réussie !', {
         appearance: 'success',
       });
-      getProfile();
+      await getProfile();
+      console.log(profile);
       getUserEvents();
       setTimeout(() => {
         history.push('/');
-      }, 3000);
+      }, 500);
     } catch (err) {
       if (err.response && err.response.status === 401) {
         addToast('Email ou mot de passe incorrect !', {
@@ -59,6 +61,7 @@ export default function CurrentUserContextProvider({ children }) {
     }
   };
 
+  console.log(profile);
   const logout = async () => {
     try {
       await API.get('/auth/logout');

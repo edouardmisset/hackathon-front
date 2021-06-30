@@ -80,6 +80,22 @@ body {
   @apply text-xl font-bold  mt-10;
 }
 
+.plus {
+  margin: 0.5rem;
+  fill: var(--fiverr-green);
+  stroke: white;
+}
+
+.plus:hover {
+  transform: scale(1.2);
+  transition: all 0.3s ease-out;
+}
+
+.plus circle {
+  fill: var(--fiverr-green);
+  stroke: black;
+}
+
 /* Small screens */
 @media only screen and (max-width: 600px) {
   main {

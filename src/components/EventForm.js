@@ -42,7 +42,7 @@ export default function EventForm() {
   }, []);
 
   return (
-    <div className="flex items-center justify-center w-4/5 px-4 my-5 m-auto sm:px-8 lg:px-8 p-5 border shadow-2xl">
+    <div className="flex items-center justify-center w-1/2 m-auto   border shadow-2xl">
       <div className="max-w-md w-full">
         <h1 className="titles">Add a new event</h1>
         <form
@@ -130,6 +130,13 @@ export default function EventForm() {
             </select>
           </div>
           <div className="mt-5">
+            <label htmlFor="time" className="subtitles">
+              choose your start time
+            </label>
+            <br />
+            <input type="time" {...register('time')} />
+          </div>
+          <div className="mt-5">
             <div className="subtitles">Add a picture (optional) :</div>
             <input
               className="mt-2"
@@ -183,7 +190,7 @@ export default function EventForm() {
           {newSkills && (
             <div className="mt-5">
               <legend className="subtitles">
-                Choose the skills you would like to acquire with this event :
+                Choose the skills you want to learn during this event :
               </legend>
               {newSkills.map((skill) => (
                 <div key={skill.id} className="m-1">
@@ -207,7 +214,7 @@ export default function EventForm() {
               type="submit"
               className="mt-5 group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white btn btn-green"
             >
-              Créer
+              Create
             </button>
           </div>
         </form>
