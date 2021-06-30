@@ -9,7 +9,7 @@ export default function EventForm() {
   const [currentSkills, setCurrentSkills] = useState([]);
   const [newSkills, setNewSkills] = useState([]);
   const { createEvent } = useContext(CurrentEventContext);
-  const { register, handleSubmit, setValue } = useForm();
+  const { register, handleSubmit } = useForm();
 
   const handleChangeToggle = () => {
     setEvent(!event);
@@ -23,8 +23,6 @@ export default function EventForm() {
       popularity: 0,
     });
   };
-
-
 
   useEffect(() => {
     API.get(`events/tags`)
