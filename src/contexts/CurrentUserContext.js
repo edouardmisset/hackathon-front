@@ -15,10 +15,9 @@ export default function CurrentUserContextProvider({ children }) {
 
   const [userEventList, setUserEventList] = useState([]);
 
-  const getUserEvents = async () => {
+  const getUserEvents = async (user) => {
     try {
-      const { data } = await API.get(`/users/${profile.id}/events`);
-      console.log(data);
+      const { data } = await API.get(`/users/${user.id}/events`);
       setUserEventList(data);
     } catch (error) {
       console.error(error);
@@ -46,12 +45,11 @@ export default function CurrentUserContextProvider({ children }) {
       addToast('Successfully connected!', {
         appearance: 'success',
       });
-      await getProfile();
-      console.log(profile);
-      getUserEvents();
+      const user = await getProfile();
       setTimeout(() => {
         history.push('/');
       }, 500);
+      await getUserEvents(user);
     } catch (err) {
       if (err.response && err.response.status === 401) {
         addToast('Email or password is incorrect!', {
@@ -61,11 +59,10 @@ export default function CurrentUserContextProvider({ children }) {
     }
   };
 
-  console.log(profile);
   const logout = async () => {
     try {
       await API.get('/auth/logout');
-      addToast('Successfully connected!', {
+      addToast('Successfully disconnected!', {
         appearance: 'success',
       });
       setProfile(undefined);
@@ -85,6 +82,7 @@ export default function CurrentUserContextProvider({ children }) {
       setProfile(data);
     } catch (err) {
       window.console.error(err);
+    } finally {
       return data;
     }
   };

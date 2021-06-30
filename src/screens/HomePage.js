@@ -19,7 +19,6 @@ export default function HomePage() {
     });
   }, []);
 
-  console.log(userEventList);
   return (
     <>
       <div className="search-plus flex">

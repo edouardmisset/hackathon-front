@@ -30,7 +30,7 @@ export default function Event({
           </div>
           <div className="text-grey-darker text-sm">{location} </div>
           <div className="text-grey-darker text-sm mt-4 font-bold">
-            Organized by {owner.firstName} {owner.lastName}
+            Organized by {owner?.firstName} {owner?.lastName}
           </div>
 
           <div className="text-grey-darker text-sm mt-4">{description} </div>

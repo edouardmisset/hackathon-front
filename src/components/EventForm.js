@@ -24,14 +24,14 @@ export default function EventForm() {
       .then((res) => {
         setTagList(res.data);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => console.error(err));
 
     API.get(`/profiles`)
       .then((res) => {
         setCurrentSkills(res.data.currentSkills);
         setNewSkills(res.data.skillsToAcquire);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => console.error(err));
   }, []);
 
   return (
