@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import API from '../APIClient';
 
-export default function Profile({ id = 1 }) {
+export default function Profile() {
   const [userDetails, setUserDetails] = useState([]);
   const [currentSkill, setCurrentSkills] = useState({});
   const [newSkill, setNewSkill] = useState({});
@@ -28,14 +28,14 @@ export default function Profile({ id = 1 }) {
   } = useForm();
 
   const onSubmitNewCurrentSkill = async (formCurrent) => {
-    await API.post(`/skills/current`, { ...formCurrent, userId: id })
+    await API.post(`/skills/current`, formCurrent)
       .then(() => {})
       .catch((err) => console.error(err));
     setCurrentSkills(formCurrent);
   };
 
   const onSubmitNewSkillToAcquire = async (formAcquire) => {
-    await API.post(`/skills/new`, { ...formAcquire, userId: id })
+    await API.post(`/skills/new`, formAcquire)
       .then(() => {})
       .catch((err) => console.error(err));
     setNewSkill(formAcquire);
