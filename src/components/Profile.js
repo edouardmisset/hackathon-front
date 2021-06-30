@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
+
 import API from '../APIClient';
 
 export default function Profile() {
@@ -47,7 +48,6 @@ export default function Profile() {
       .catch((err) => console.error(err));
     setCurrentSkills(skill);
   };
-
   return userDetails.length !== 0 ? (
     <div className="flex flex-col items-center p-2 md:p-4">
       <div className="flex w-full justify-around mb-20 mt-10">
