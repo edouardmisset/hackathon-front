@@ -32,7 +32,7 @@ export default function CurrentUserContextProvider({ children }) {
       });
       setTimeout(() => {
         history.push('/login');
-      }, 3000);
+      }, 500);
     } catch (err) {
       addToast('Il y a eu une erreur lors de la création de votre compte.', {
         appearance: 'error',
@@ -49,7 +49,7 @@ export default function CurrentUserContextProvider({ children }) {
       getUserEvents();
       setTimeout(() => {
         history.push('/');
-      }, 3000);
+      }, 500);
     } catch (err) {
       if (err.response && err.response.status === 401) {
         addToast('Email ou mot de passe incorrect !', {
