@@ -24,11 +24,7 @@ export default function EventForm() {
     });
   };
 
-  const handleAvatarFileInputChange = (e) => {
-    if (e.target.files[0]) {
-      setValue('file', URL.createObjectURL(e.target.files[0]));
-    }
-  };
+
 
   useEffect(() => {
     API.get(`events/tags`)
