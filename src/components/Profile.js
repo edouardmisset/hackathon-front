@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
+
 import API from '../APIClient';
 
 export default function Profile({ id = 1 }) {
@@ -29,25 +30,24 @@ export default function Profile({ id = 1 }) {
 
   const onSubmitNewCurrentSkill = async (formCurrent) => {
     await API.post(`/skills/current`, { ...formCurrent, userId: id })
-      .then(() => {})
+      .then(() => { })
       .catch((err) => console.error(err));
     setCurrentSkills(formCurrent);
   };
 
   const onSubmitNewSkillToAcquire = async (formAcquire) => {
     await API.post(`/skills/new`, { ...formAcquire, userId: id })
-      .then(() => {})
+      .then(() => { })
       .catch((err) => console.error(err));
     setNewSkill(formAcquire);
   };
 
   const handleChangeLevel = async (skill) => {
     await API.post(`/skills/currentchange`, { ...skill })
-      .then(() => {})
+      .then(() => { })
       .catch((err) => console.error(err));
     setCurrentSkills(skill);
   };
-
   return userDetails.length !== 0 ? (
     <div className="flex flex-col items-center p-2 md:p-4">
       <div className="flex w-full justify-around mb-20 mt-10">

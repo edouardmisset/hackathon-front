@@ -142,14 +142,12 @@ export default function EventForm() {
             <input type="time" {...register('time')} />
           </div>
           <div className="mt-5">
-            <div className="subtitles">Add a picture (optional) :</div>
+            <label htmlFor="image" className="mt-5 subtitles">Add a picture (optional) :</label>
             <input
-              className="mt-2"
-              type="file"
-              accept="image/png, image/jpeg, image/jpg"
-              ref={avatarUploadRef}
-              onChange={handleAvatarFileInputChange}
-              {...register('file')}
+              className="relative block w-full px-3 py-2 border focus:outline-none focus:z-10 sm:text-sm"
+              type="text"
+              placeholder="put your picture url"
+              {...register('image')}
             />
           </div>
           <div className="mt-5">
