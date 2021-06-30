@@ -28,14 +28,14 @@ export default function CurrentUserContextProvider({ children }) {
   const createProfile = async (form) => {
     try {
       await API.post('/users', form);
-      addToast('Votre compte a été créé avec succès', {
+      addToast('Account successfully created', {
         appearance: 'success',
       });
       setTimeout(() => {
         history.push('/login');
       }, 500);
     } catch (err) {
-      addToast('Il y a eu une erreur lors de la création de votre compte.', {
+      addToast('Account creation was unsuccessful.', {
         appearance: 'error',
       });
     }
@@ -43,7 +43,7 @@ export default function CurrentUserContextProvider({ children }) {
   const login = async ({ email, password }) => {
     try {
       await API.post('/auth/login', { email, password });
-      addToast('Connexion réussie !', {
+      addToast('Successfully connected!', {
         appearance: 'success',
       });
       await getProfile();
@@ -54,7 +54,7 @@ export default function CurrentUserContextProvider({ children }) {
       }, 500);
     } catch (err) {
       if (err.response && err.response.status === 401) {
-        addToast('Email ou mot de passe incorrect !', {
+        addToast('Email or password is incorrect!', {
           appearance: 'error',
         });
       } else window.console.error(err);
@@ -65,13 +65,13 @@ export default function CurrentUserContextProvider({ children }) {
   const logout = async () => {
     try {
       await API.get('/auth/logout');
-      addToast('Vous vous êtes déconnecté !', {
+      addToast('Successfully connected!', {
         appearance: 'success',
       });
       setProfile(undefined);
       history.push('/');
     } catch (err) {
-      addToast('Impossible de se déconnecter !', {
+      addToast('Connection Failed!', {
         appearance: 'error',
       });
     }
