@@ -1,15 +1,16 @@
 import './DetailedEvent.css';
 import './button.css';
 import API from '../APIClient';
-import { useEffect } from 'react';
-import { useState } from 'react';
+import { useEffect, useContext, useState } from 'react';
 import { useParams } from 'react-router';
 import dayjs from 'dayjs';
 import { useToasts } from 'react-toast-notifications';
+import history from '../history';
+import { CurrentUserContext } from '../contexts/CurrentUserContext';
 
 export default function DetailedEvent() {
   const [eventInfo, setEventInfo] = useState({});
-
+  const { profile } = useContext(CurrentUserContext);
   const {
     name,
     image,
@@ -35,11 +36,14 @@ export default function DetailedEvent() {
   }, [id]);
 
   const handleClick = () => {
-    API.post('/register', { userId: 1, eventId: id })
+    API.post('/register', { userId: profile.id, eventId: id })
       .then(() => {
         addToast('Successfully registered for this event', {
           appearance: 'success',
         });
+        setTimeout(() => {
+          history.push('/');
+        }, 500);
       })
       .catch((error) => {
         addToast('Something went wrong 😕', {
