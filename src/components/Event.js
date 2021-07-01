@@ -25,7 +25,7 @@ export default function Event({
         <div className="px-6 py-4">
           <div className="font-bold text-xl mb-2">{name}</div>
           <div className="text-grey-darker text-sm">
-            {dayjs(date).format('DD/MM/YYYY HH:mm')} - Duration :
+            {dayjs(date).format('DD/MM/YYYY HH:mm')} - Duration :{' '}
             {parseInt(duration / 60, 10)}h
           </div>
           <div className="text-grey-darker text-sm">{location} </div>
@@ -38,7 +38,7 @@ export default function Event({
 
         <div className="px-6 pt-4 pb-2">
           <h3>Topics that the organizer will discuss :</h3>
-          {currentSkills.length &&
+          {currentSkills.length > 0 ? (
             currentSkills.map((currentSkill) => (
               <span
                 key={currentSkill.skill.id}
@@ -46,11 +46,14 @@ export default function Event({
               >
                 💡 {currentSkill.skill.name}
               </span>
-            ))}
+            ))
+          ) : (
+            <p>None</p>
+          )}
         </div>
         <div className="px-6 pt-4 pb-2">
           <h3>Topics on which the organizers would like to have help :</h3>
-          {skillsToAcquire.length &&
+          {skillsToAcquire.length > 0 ? (
             skillsToAcquire.map((skillToAcquire) => (
               <span
                 key={skillToAcquire.skill.id}
@@ -58,7 +61,10 @@ export default function Event({
               >
                 ❓ {skillToAcquire.skill.name}
               </span>
-            ))}
+            ))
+          ) : (
+            <p>None</p>
+          )}
         </div>
         <div className="px-6 pt-4 pb-2">
           {categories.length &&

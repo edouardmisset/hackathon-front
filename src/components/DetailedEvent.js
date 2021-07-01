@@ -80,7 +80,7 @@ export default function DetailedEvent() {
 
           <div className="px-6 pt-4 pb-2">
             <h3>Topics that the organizer will discuss :</h3>
-            {eventCurrentSkills.length &&
+            {eventCurrentSkills.length > 0 ? (
               eventCurrentSkills.map((currentSkill) => (
                 <span
                   key={currentSkill.skill.id}
@@ -88,11 +88,14 @@ export default function DetailedEvent() {
                 >
                   💡 {currentSkill.skill.name}
                 </span>
-              ))}
+              ))
+            ) : (
+              <p>None</p>
+            )}
           </div>
           <div className="px-6 pt-4 pb-2">
             <h3>Topics on which the organizers would like to have help :</h3>
-            {eventSkillsToAcquire.length &&
+            {eventSkillsToAcquire.length > 0 ? (
               eventSkillsToAcquire.map((skillToAcquire) => (
                 <span
                   key={skillToAcquire.skill.id}
@@ -100,7 +103,10 @@ export default function DetailedEvent() {
                 >
                   ❓ {skillToAcquire.skill.name}
                 </span>
-              ))}
+              ))
+            ) : (
+              <p>None</p>
+            )}
           </div>
           <div className="px-6 pt-4 pb-2">
             {eventTags.length &&
