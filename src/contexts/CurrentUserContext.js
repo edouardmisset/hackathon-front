@@ -15,10 +15,9 @@ export default function CurrentUserContextProvider({ children }) {
 
   const [userEventList, setUserEventList] = useState([]);
 
-  const getUserEvents = async () => {
+  const getUserEvents = async (user) => {
     try {
-      const { data } = await API.get(`/users/${profile.id}/events`);
-      console.log(data);
+      const { data } = await API.get(`/users/${user.id}/events`);
       setUserEventList(data);
     } catch (error) {
       console.error(error);
@@ -28,14 +27,14 @@ export default function CurrentUserContextProvider({ children }) {
   const createProfile = async (form) => {
     try {
       await API.post('/users', form);
-      addToast('Votre compte a été créé avec succès', {
+      addToast('Account successfully created', {
         appearance: 'success',
       });
       setTimeout(() => {
         history.push('/login');
       }, 500);
     } catch (err) {
-      addToast('Il y a eu une erreur lors de la création de votre compte.', {
+      addToast('Account creation was unsuccessful.', {
         appearance: 'error',
       });
     }
@@ -43,35 +42,33 @@ export default function CurrentUserContextProvider({ children }) {
   const login = async ({ email, password }) => {
     try {
       await API.post('/auth/login', { email, password });
-      addToast('Connexion réussie !', {
+      addToast('Successfully connected!', {
         appearance: 'success',
       });
-      await getProfile();
-      console.log(profile);
-      getUserEvents();
+      const user = await getProfile();
       setTimeout(() => {
         history.push('/');
       }, 500);
+      await getUserEvents(user);
     } catch (err) {
       if (err.response && err.response.status === 401) {
-        addToast('Email ou mot de passe incorrect !', {
+        addToast('Email or password is incorrect!', {
           appearance: 'error',
         });
       } else window.console.error(err);
     }
   };
 
-  console.log(profile);
   const logout = async () => {
     try {
       await API.get('/auth/logout');
-      addToast('Vous vous êtes déconnecté !', {
+      addToast('Successfully disconnected!', {
         appearance: 'success',
       });
       setProfile(undefined);
       history.push('/');
     } catch (err) {
-      addToast('Impossible de se déconnecter !', {
+      addToast('Connection Failed!', {
         appearance: 'error',
       });
     }
@@ -86,6 +83,7 @@ export default function CurrentUserContextProvider({ children }) {
       setIsLoggedIn(true);
     } catch (err) {
       window.console.error(err);
+    } finally {
       return data;
     }
   };
