@@ -79,9 +79,9 @@ export default function Profile() {
                   {userDetails.currentSkills.map((skill) => (
                     <li key={skill.id} className="flex justify-between">
                       {skill.name}
-                      <span> {'⭐'.repeat(skill.level)}</span>
+                      {/* <span> {'⭐'.repeat(skill.level)}</span> */}
                       <span className="ml-5">
-                        <label htmlFor={skill.name}>Change the level :</label>
+                        {/* <label htmlFor={skill.name}>Change the level :</label> */}
                         <select
                           key={skill.id}
                           {...register(skill.name, { required: true })}

@@ -3,6 +3,7 @@
   padding: 0;
   position: absolute;
   left: 50%;
+  top: 60px;
   transform: translate(calc(-50% + var(--nav-size) / 2));
 }
 
